@@ -1,5 +1,7 @@
-const { restoreNames } = require('./restoreNames');
+'use strict';
+
+// const { restoreNames } = require('./restoreNames');
 
 describe('restoreNames', () => {
-  
+
 });

@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * @typedef {Object} User
  * @property {string} firstName
@@ -6,7 +8,7 @@
  *
  * @param {User[]} users
  */
- function restoreNames(users) {
+function restoreNames(users) {
   for (const user of users) {
     if (!user.firstName) {
       [user.firstName] = user.fullName.split(' ');
