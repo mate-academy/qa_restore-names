@@ -21,7 +21,7 @@ describe('restoreNames', () => {
     expect(users[0].firstName).toBe('Jack');
   });
 
-  it(`should restore 'firstName' if is equal 'undefined'`, () => {
+  it(`should restore 'firstName' if it is equal 'undefined'`, () => {
     const users = [
       {
         firstName: undefined,
@@ -76,7 +76,6 @@ describe('restoreNames', () => {
     expect(users[1].firstName).toBe('Mike');
   });
 
-  
   it(`should throw an error if the user does not have a 'fullName'`, () => {
     const users = [
       {
@@ -95,7 +94,7 @@ describe('restoreNames', () => {
       .toThrow();
   });
 
-  it(`should do nothing for an empty array`, () => {
+  it(`should return an empty array`, () => {
     const users = [];
 
     restoreNames(users);
