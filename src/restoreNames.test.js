@@ -8,6 +8,18 @@ describe('restoreNames', () => {
       .toBeInstanceOf(Function);
   });
 
+  it(`shouldn't return anything`, () => {
+    const users = [
+      {
+        lastName: 'Smith',
+        fullName: 'John Smith',
+      }];
+
+    const toReturn = restoreNames(users);
+
+    expect(toReturn).toBeUndefined();
+  });
+
   it(`should add firstName of user who does not have it`, () => {
     const users = [
       {
@@ -43,7 +55,7 @@ describe('restoreNames', () => {
       }]);
   });
 
-  it(`should add firstName for users who don't have it `
+  it(`should add firstName for multiple users who don't have it `
     + `based on their fullNames`, () => {
     const users = [
       {
@@ -52,7 +64,6 @@ describe('restoreNames', () => {
         fullName: 'John Smith',
       },
       {
-        firstName: undefined,
         lastName: 'Wind',
         fullName: 'Ann Wind',
       }];
@@ -115,7 +126,7 @@ describe('restoreNames', () => {
       .toThrow();
   });
 
-  it(`should write only first name of user, if user has middle name`, () => {
+  it(`should add only first name of user, if user has middle name`, () => {
     const users = [{
       lastName: 'Potter',
       fullName: `Albus Severus Potter`,
@@ -129,5 +140,33 @@ describe('restoreNames', () => {
         lastName: 'Potter',
         fullName: `Albus Severus Potter`,
       }]);
+  });
+
+  it(`should add fullName to firstName, if fullName contains 1 word`, () => {
+    const users = [{
+      lastName: 'Potter',
+      fullName: 'Potter',
+    }];
+
+    restoreNames(users);
+
+    expect(users)
+      .toEqual([{
+        firstName: 'Potter',
+        lastName: 'Potter',
+        fullName: 'Potter',
+      }]);
+  });
+
+  it(`'user' should have fullName`, () => {
+    const users = [{
+      lastName: 'Potter',
+      fullName: undefined,
+    }];
+
+    expect(() => {
+      restoreNames(users);
+    })
+      .toThrow();
   });
 });
