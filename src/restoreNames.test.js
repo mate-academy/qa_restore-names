@@ -27,8 +27,10 @@ describe('restoreNames', () => {
         fullName: 'Mike Adams',
       },
     ];
+
     // action
     restoreNames(users);
+
     // check
     expect(users)
       .toEqual([
@@ -58,8 +60,10 @@ describe('restoreNames', () => {
         fullName: 'Mike Adams',
       },
     ];
+
     // action
     restoreNames(users);
+
     // check
     expect(users)
       .toEqual([
@@ -90,8 +94,10 @@ describe('restoreNames', () => {
         fullName: 'Mike Adams',
       },
     ];
+
     // action
     restoreNames(users);
+
     // check
     expect(users)
       .toEqual([
