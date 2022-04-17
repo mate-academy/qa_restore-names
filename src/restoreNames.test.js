@@ -8,11 +8,6 @@ describe('restoreNames', () => {
       .toBeInstanceOf(Function);
   });
 
-  it(`should return Object`, () => {
-    expect(restoreNames)
-      .toBeInstanceOf(Object);
-  });
-
   it(`sets correct firstName instead undefined`, () => {
     // preparation
     const users = [
