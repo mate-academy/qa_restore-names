@@ -8,9 +8,15 @@ describe('restoreNames', () => {
       .toBeInstanceOf(Function);
   });
 
-  it(`should return Object`, () => {
-    expect(restoreNames)
-      .toBeInstanceOf(Object);
+  it(`shouldn't return anything`, () => {
+    const users = [
+      {
+        lastName: 'Adams',
+        fullName: 'Mike Adams',
+      }];
+
+    expect(restoreNames(users))
+      .toBeUndefined();
   });
 
   it(`sets correct firstName instead undefined`, () => {
@@ -18,6 +24,40 @@ describe('restoreNames', () => {
     const users = [
       {
         firstName: undefined,
+        lastName: 'Holy',
+        fullName: 'Jack Holy',
+      },
+      {
+        firstName: 'Mike',
+        lastName: 'Adams',
+        fullName: 'Mike Adams',
+      },
+    ];
+
+    // action
+    restoreNames(users);
+
+    // check
+    expect(users)
+      .toEqual([
+        {
+          firstName: 'Jack',
+          lastName: 'Holy',
+          fullName: 'Jack Holy',
+        },
+        {
+          firstName: 'Mike',
+          lastName: 'Adams',
+          fullName: 'Mike Adams',
+        },
+      ]);
+  });
+
+  it(`sets correct firstName when firstName empty string`, () => {
+    // preparation
+    const users = [
+      {
+        firstName: '',
         lastName: 'Holy',
         fullName: 'Jack Holy',
       },
