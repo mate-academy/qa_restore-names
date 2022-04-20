@@ -91,7 +91,7 @@ describe('restoreNames', () => {
     ]);
   });
 
-  it(`should add firstName from Fullname if it's not there 
+  it(`should add firstName from Fullname if  it's not there 
   and contains a dash`, () => {
     const users = [
       {
