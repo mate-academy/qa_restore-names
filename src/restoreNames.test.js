@@ -3,7 +3,7 @@
 describe('restoreNames', () => {
   const { restoreNames } = require('./restoreNames');
 
-  it('should return the firstName from the Fullname if it is undefined', () => {
+  it('should add the firstName from the Fullname if it is undefined', () => {
     const users = [
       {
         firstName: undefined,
@@ -33,7 +33,7 @@ describe('restoreNames', () => {
     ]);
   });
 
-  it(`should return the firstName from the Fullname if it's not there`, () => {
+  it(`should add the firstName from the Fullname if it's not there`, () => {
     const users = [
       {
         lastName: 'Zelenskyy',
@@ -91,7 +91,7 @@ describe('restoreNames', () => {
     ]);
   });
 
-  it(`should return firstName from Fullname if it's not there 
+  it(`should add firstName from Fullname if it's not there 
   and contains a dash`, () => {
     const users = [
       {
