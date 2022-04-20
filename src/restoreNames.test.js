@@ -13,7 +13,8 @@ describe('restoreNames', () => {
       {
         lastName: 'Smith',
         fullName: 'John Smith',
-      }];
+      }
+    ];
 
     const toReturn = restoreNames(users);
 
