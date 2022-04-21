@@ -1,19 +1,19 @@
-'use strict';
+"use strict";
 
-describe('restoreNames', () => {
-  const { restoreNames } = require('./restoreNames');
+describe("restoreNames", () => {
+  const { restoreNames } = require("./restoreNames");
 
-  it('should add the firstName from the Fullname if it is undefined', () => {
+  it("should add the firstName from the Fullname if it is undefined", () => {
     const users = [
       {
         firstName: undefined,
-        lastName: 'Zelenskyy',
-        fullName: 'Volodymyr Zelenskyy',
+        lastName: "Zelenskyy",
+        fullName: "Volodymyr Zelenskyy",
       },
       {
         firstName: undefined,
-        lastName: 'Arestovych',
-        fullName: 'Oleksiy Arestovych',
+        lastName: "Arestovych",
+        fullName: "Oleksiy Arestovych",
       },
     ];
 
@@ -21,14 +21,14 @@ describe('restoreNames', () => {
 
     expect(users).toEqual([
       {
-        firstName: 'Volodymyr',
-        lastName: 'Zelenskyy',
-        fullName: 'Volodymyr Zelenskyy',
+        firstName: "Volodymyr",
+        lastName: "Zelenskyy",
+        fullName: "Volodymyr Zelenskyy",
       },
       {
-        firstName: 'Oleksiy',
-        lastName: 'Arestovych',
-        fullName: 'Oleksiy Arestovych',
+        firstName: "Oleksiy",
+        lastName: "Arestovych",
+        fullName: "Oleksiy Arestovych",
       },
     ]);
   });
@@ -36,12 +36,12 @@ describe('restoreNames', () => {
   it(`should add the firstName from the Fullname if it's not there`, () => {
     const users = [
       {
-        lastName: 'Zelenskyy',
-        fullName: 'Volodymyr Zelenskyy',
+        lastName: "Zelenskyy",
+        fullName: "Volodymyr Zelenskyy",
       },
       {
-        lastName: 'Arestovych',
-        fullName: 'Oleksiy Arestovych',
+        lastName: "Arestovych",
+        fullName: "Oleksiy Arestovych",
       },
     ];
 
@@ -49,14 +49,14 @@ describe('restoreNames', () => {
 
     expect(users).toEqual([
       {
-        firstName: 'Volodymyr',
-        lastName: 'Zelenskyy',
-        fullName: 'Volodymyr Zelenskyy',
+        firstName: "Volodymyr",
+        lastName: "Zelenskyy",
+        fullName: "Volodymyr Zelenskyy",
       },
       {
-        firstName: 'Oleksiy',
-        lastName: 'Arestovych',
-        fullName: 'Oleksiy Arestovych',
+        firstName: "Oleksiy",
+        lastName: "Arestovych",
+        fullName: "Oleksiy Arestovych",
       },
     ]);
   });
@@ -64,14 +64,14 @@ describe('restoreNames', () => {
   it(`should be left unchanged if all fields are present`, () => {
     const users = [
       {
-        firstName: 'Volodymyr',
-        lastName: 'Zelenskyy',
-        fullName: 'Volodymyr Zelenskyy',
+        firstName: "Volodymyr",
+        lastName: "Zelenskyy",
+        fullName: "Volodymyr Zelenskyy",
       },
       {
-        firstName: 'Oleksiy',
-        lastName: 'Arestovych',
-        fullName: 'Oleksiy Arestovych',
+        firstName: "Oleksiy",
+        lastName: "Arestovych",
+        fullName: "Oleksiy Arestovych",
       },
     ];
 
@@ -79,14 +79,14 @@ describe('restoreNames', () => {
 
     expect(users).toEqual([
       {
-        firstName: 'Volodymyr',
-        lastName: 'Zelenskyy',
-        fullName: 'Volodymyr Zelenskyy',
+        firstName: "Volodymyr",
+        lastName: "Zelenskyy",
+        fullName: "Volodymyr Zelenskyy",
       },
       {
-        firstName: 'Oleksiy',
-        lastName: 'Arestovych',
-        fullName: 'Oleksiy Arestovych',
+        firstName: "Oleksiy",
+        lastName: "Arestovych",
+        fullName: "Oleksiy Arestovych",
       },
     ]);
   });
@@ -95,12 +95,12 @@ describe('restoreNames', () => {
   and contains a dash`, () => {
     const users = [
       {
-        lastName: 'Zelenskyy',
-        fullName: 'Volodymyr-Arsenovich Zelenskyy',
+        lastName: "Zelenskyy",
+        fullName: "Volodymyr-Arsenovich Zelenskyy",
       },
       {
-        lastName: 'Arestovych',
-        fullName: 'Oleksiy-Petrovych Arestovych',
+        lastName: "Arestovych",
+        fullName: "Oleksiy-Petrovych Arestovych",
       },
     ];
 
@@ -108,15 +108,28 @@ describe('restoreNames', () => {
 
     expect(users).toEqual([
       {
-        firstName: 'Volodymyr-Arsenovich',
-        lastName: 'Zelenskyy',
-        fullName: 'Volodymyr-Arsenovich Zelenskyy',
+        firstName: "Volodymyr-Arsenovich",
+        lastName: "Zelenskyy",
+        fullName: "Volodymyr-Arsenovich Zelenskyy",
       },
       {
-        firstName: 'Oleksiy-Petrovych',
-        lastName: 'Arestovych',
-        fullName: 'Oleksiy-Petrovych Arestovych',
+        firstName: "Oleksiy-Petrovych",
+        lastName: "Arestovych",
+        fullName: "Oleksiy-Petrovych Arestovych",
       },
     ]);
+  });
+
+  it(`should not return anything from  the function`, () => {
+    const users = [
+      {
+        lastName: "Zelenskyy",
+        fullName: "Volodymyr-Arsenovich Zelenskyy",
+      },
+    ];
+
+    const returnName = restoreNames(users);
+
+    expect(returnName).toBeUndefined();
   });
 });
