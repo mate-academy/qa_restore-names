@@ -30,7 +30,7 @@ describe('restoreNames', () => {
       .toEqual({ firstName: 'Jack', lastName: 'Holy', fullName: 'Jack Holy' });
   });
 
-  it(`should work with an array of objects where all 'firstName' fields are undefined`, () => {
+  it(`should work with all 'firstName' fields are undefined`, () => {
     const testUsers = [
       { firstName: undefined, lastName: 'Holy', fullName: 'Jack Holy' },
       { firstName: undefined, lastName: 'Holy', fullName: 'Jack Holy' },
@@ -45,7 +45,7 @@ describe('restoreNames', () => {
       ]);
   });
 
-  it(`should work with an array of objects where some 'firstName' fields are undefined`, () => {
+  it(`should work with some 'firstName' fields are undefined`, () => {
     const testUsers = [
       { firstName: undefined, lastName: 'Holy', fullName: 'Jack Holy' },
       { firstName: 'Jack', lastName: 'Holy', fullName: 'Jack Holy' },
@@ -59,8 +59,6 @@ describe('restoreNames', () => {
         { firstName: 'Jack', lastName: 'Holy', fullName: 'Jack Holy' },
     ]);
   });
-
-  // write tests here it ( `should return 'Jack Holy' if name is undefined` () => {});
 });
 
 
