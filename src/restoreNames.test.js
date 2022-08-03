@@ -19,6 +19,10 @@ describe('restoreNames', () => {
     expect(restoreNames).toBeInstanceOf(Function);
   });
 
+  it('should not return anything from the function', () => {
+    expect(restoreNames(users)).toBe(undefined);
+  });
+
   it('should add `firstName` property to each Object', () => {
     restoreNames(users);
 
