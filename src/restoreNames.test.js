@@ -70,4 +70,23 @@ describe('restoreNames', () => {
 
     expect(usersForTesting).toEqual(usersMock);
   });
+
+  it(`Shouldn't add anything if the 'firstName' already exists`, () => {
+    const usersForTesting = [
+      {
+        firstName: 'Jack',
+        lastName: 'Holy',
+        fullName: 'Jack Holy',
+      },
+      {
+        firstName: 'Mike',
+        lastName: 'Adams',
+        fullName: 'Mike Adams',
+      },
+    ];
+
+    restoreNames(usersForTesting);
+
+    expect(usersForTesting).toEqual(usersMock);
+  });
 });
