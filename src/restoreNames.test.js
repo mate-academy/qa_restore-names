@@ -52,7 +52,7 @@ describe('restoreNames', () => {
   it(`shouldn't change users array if 'first name is exist'`, function() {
     const brokenUsers = [
       {
-        firstName: 'Musk',
+        firstName: 'Elon',
         lastName: 'Musk',
         fullName: 'Elon Musk',
       },
