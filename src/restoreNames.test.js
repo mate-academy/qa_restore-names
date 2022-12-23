@@ -150,4 +150,20 @@ describe('restoreNames', () => {
         fullName: 'Christina Ricci',
       }]);
   });
+
+  test('should restore the first name if "firstName" key is not exist', () => {
+    const user = [{
+      lastName: 'Stadnyk',
+      fullName: 'Kyrylo Stadnyk',
+    }];
+
+    restoreNames(user);
+
+    expect(user)
+      .toStrictEqual([{
+        firstName: 'Kyrylo',
+        lastName: 'Stadnyk',
+        fullName: 'Kyrylo Stadnyk',
+      }]);
+  });
 });
