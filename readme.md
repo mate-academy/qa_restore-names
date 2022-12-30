@@ -1,4 +1,5 @@
-# QA Restore names ([uk](readme.uk.md), [ru](readme.ru.md))
+# QA Restore names ([uk](readme.uk.md))
+
 The database failed. Some users lost values from the `firstName` field, but
 `user` object has a `fullName` field, so we can restore `firstName`.
 
@@ -7,7 +8,8 @@ correct `firstName` to users who do not have it or is equal to `undefined`. You
 should not return anything from the function.
 
 Example:
-```
+
+```js
 const users = [
   {
     firstName: undefined,
@@ -37,5 +39,6 @@ restoreNames(users);
 ```
 
 ---
-- [Guideline](https://github.com/mate-academy/js_task-guideline/blob/master/README.md)
-- Read more about [Jest expectations](https://jestjs.io/uk/docs/expect)
+
+- [Guideline](https://github.com/mate-academy/js_task-guideline/blob/master/README.md);
+- Read more about [Jest expectations](https://jestjs.io/uk/docs/expect).

@@ -1,4 +1,5 @@
 # QA Restore names
+
 В базі даних користувачів стався збій. В декого зникли значення з поля
 `firstName`, добре що у `user` вже є поле `fullName`, з якого ми можемо взяти
 потрібні дані.
@@ -8,7 +9,8 @@
 спираючись на поле `fullName`. Функція нічого не повертає.
 
 Приклад:
-```
+
+```js
 const users = [
   {
     firstName: undefined,
@@ -38,5 +40,6 @@ restoreNames(users);
 ```
 
 ---
-- [Guideline](https://github.com/mate-academy/js_task-guideline/blob/master/README.md)
-- Read more about [Jest expectations](https://jestjs.io/uk/docs/expect)
+
+- [Guideline](https://github.com/mate-academy/js_task-guideline/blob/master/README.md);
+- Read more about [Jest expectations](https://jestjs.io/uk/docs/expect).
