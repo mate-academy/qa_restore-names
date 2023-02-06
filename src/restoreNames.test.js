@@ -64,4 +64,17 @@ describe('restoreNames', () => {
     expect(user)
       .toEqual(correctUser);
   });
+
+  it('should not change already existed first name', () => {
+    const user = [{
+      firstName: 'Jack',
+      lastName: 'Adams',
+      fullName: 'Mike Adams',
+    }];
+
+    restoreNames(user);
+
+    expect(user)
+      .toEqual(user);
+  });
 });
