@@ -1,11 +1,69 @@
 'use strict';
 
 describe('restoreNames', () => {
-  // const { restoreNames } = require('./restoreNames');
+   const { restoreNames } = require('./restoreNames');
 
-  it('should ', () => {
-
+   it(`should be declared`, () => {
+    expect(restoreNames)
+      .toBeInstanceOf(Function);
   });
 
-  // write tests here
+  it(`should modify objects where field 'firstName' is undefined`, () => {
+    const testUsers = [
+      { firstName: undefined, lastName: 'Holy', fullName: 'Jack Holy' },
+    ];
+
+    restoreNames(testUsers);
+
+    expect(testUsers[0])
+      .toEqual({ firstName: 'Jack', lastName: 'Holy', fullName: 'Jack Holy' });
+  });
+
+  it(`should not modify objects where field 'firstName' isn't empty`, () => {
+    const testUsers = [
+      { firstName: 'Jack', lastName: 'Holy', fullName: 'Jack Holy' },
+    ];
+
+    restoreNames(testUsers);
+
+    expect(testUsers[0])
+      .toEqual({ firstName: 'Jack', lastName: 'Holy', fullName: 'Jack Holy' });
+  });
+
+  it(`should work with all 'firstName' fields are undefined`, () => {
+    const testUsers = [
+      { firstName: undefined, lastName: 'Holy', fullName: 'Jack Holy' },
+      { firstName: undefined, lastName: 'Holy', fullName: 'Jack Holy' },
+    ];
+
+    restoreNames(testUsers);
+
+    expect(testUsers)
+      .toEqual([
+        { firstName: 'Jack', lastName: 'Holy', fullName: 'Jack Holy' },
+        { firstName: 'Jack', lastName: 'Holy', fullName: 'Jack Holy' },
+      ]);
+  });
+
+  it(`should work with some 'firstName' fields are undefined`, () => {
+    const testUsers = [
+      { firstName: undefined, lastName: 'Holy', fullName: 'Jack Holy' },
+      { firstName: 'Jack', lastName: 'Holy', fullName: 'Jack Holy' },
+    ];
+
+    restoreNames(testUsers);
+
+    expect(testUsers)
+      .toEqual([
+        { firstName: 'Jack', lastName: 'Holy', fullName: 'Jack Holy' },
+        { firstName: 'Jack', lastName: 'Holy', fullName: 'Jack Holy' },
+    ]);
+  });
 });
+
+
+
+  
+
+  
+
