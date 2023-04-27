@@ -96,6 +96,12 @@ describe('restoreNames', () => {
 
     restoreNames(users);
 
-    expect(users).toEqual(users);
+    expect(users).toEqual([
+      {
+        firstName: 'Jack',
+        lastName: 'Holy',
+        fullName: 'Jack Holy',
+      },
+    ]);
   });
 });
