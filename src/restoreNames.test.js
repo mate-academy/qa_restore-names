@@ -7,7 +7,7 @@ describe('restoreNames', () => {
     expect(restoreNames).toBeInstanceOf(Function);
   });
 
-  it(`if 'firstName' is undefined`, () => {
+  it(`'firstName' should be 'Nazar' if 'firstName' is undefined`, () => {
     const users = [
       {
         firstName: undefined,
@@ -24,7 +24,7 @@ describe('restoreNames', () => {
     expect(actual).toEqual(expected);
   });
 
-  it(`if there is no 'firstName'`, () => {
+  it(`'firstName' should be 'Nazar' if there is no 'firstName'`, () => {
     const users = [
       {
         lastName: 'Bodak',
@@ -40,7 +40,8 @@ describe('restoreNames', () => {
     expect(actual).toEqual(expected);
   });
 
-  it(`if there are 3 users with 'firstName' problem`, () => {
+  it(`'firstName's should be 'Nazar' and 'Oleksandr' 
+  if there are 2 users with 'firstName' problem`, () => {
     const users = [
       {
         firstName: undefined,
@@ -51,19 +52,31 @@ describe('restoreNames', () => {
         lastName: 'Oles',
         fullName: 'Oleksandr Oles',
       },
-      {
-        firstName: undefined,
-        lastName: 'Poroshenko',
-        fullName: 'Petro Poroshenko',
-      },
-
     ];
 
     restoreNames(users);
 
     const actual = users[0].firstName + ' '
-    + users[1].firstName + ' ' + users[2].firstName;
-    const expected = 'Nazar Oleksandr Petro';
+    + users[1].firstName;
+    const expected = 'Nazar Oleksandr';
+
+    expect(actual).toEqual(expected);
+  });
+
+  it(`'firstName' should be 'Oleg' if 'firstName' is 'Oleg' 
+  and 'fullName' is 'Nazar Bodak'`, () => {
+    const users = [
+      {
+        firstName: 'Oleg',
+        lastName: 'Bodak',
+        fullName: 'Nazar Bodak',
+      },
+    ];
+
+    restoreNames(users);
+
+    const actual = users[0].firstName;
+    const expected = 'Oleg';
 
     expect(actual).toEqual(expected);
   });
