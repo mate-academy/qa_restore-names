@@ -70,4 +70,38 @@ describe('restoreNames', () => {
       },
     ]);
   });
+
+  it('should restore firstNames for multiple users', () => {
+    const users = [
+      {
+        firstName: undefined, lastName: 'Smith', fullName: 'Jane Smith',
+      },
+      {
+        firstName: '', lastName: 'Lee', fullName: 'Anna Lee',
+      },
+      {
+        lastName: 'Brown', fullName: 'Michael Brown',
+      },
+      {
+        firstName: 'Mark', lastName: 'Johnson', fullName: 'Mark Johnson',
+      },
+    ];
+
+    restoreNames(users);
+
+    expect(users).toEqual([
+      {
+        firstName: 'Jane', lastName: 'Smith', fullName: 'Jane Smith',
+      },
+      {
+        firstName: 'Anna', lastName: 'Lee', fullName: 'Anna Lee',
+      },
+      {
+        firstName: 'Michael', lastName: 'Brown', fullName: 'Michael Brown',
+      },
+      {
+        firstName: 'Mark', lastName: 'Johnson', fullName: 'Mark Johnson',
+      },
+    ]);
+  });
 });
