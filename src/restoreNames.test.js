@@ -1,32 +1,30 @@
-
 'use strict';
 
 describe('restoreNames', () => {
   const { restoreNames } = require('./restoreNames');
 
-  it('should set correct firstName for users without firstName', () => {
+  it('should set firstName if it is omitted', () => {
     const users = [
       {
-        firstName: '', lastName: 'Doe', fullName: 'John Doe',
+        lastName: 'Doe', fullName: 'John Doe',
       },
       {
-        firstName: undefined, lastName: 'Smith', fullName: 'Jane Smith',
+        firstName: 'Jane', lastName: 'Smith', fullName: 'Jane Smith',
       },
     ];
 
     restoreNames(users);
 
     expect(users[0].firstName).toBe('John');
-    expect(users[1].firstName).toBe('Jane');
   });
 
-  it('should not modify firstName for users with existing firstName', () => {
+  it('should work with 2 elements', () => {
     const users = [
       {
-        firstName: 'John', lastName: 'Doe', fullName: 'John Doe',
+        firstName: '', lastName: 'Doe', fullName: 'John Doe',
       },
       {
-        firstName: 'Jane', lastName: 'Smith', fullName: 'Jane Smith',
+        firstName: undefined, lastName: 'Smith', fullName: 'Jane Smith',
       },
     ];
 
