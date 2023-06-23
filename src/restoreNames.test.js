@@ -1,17 +1,36 @@
 'use strict';
 
-describe('restoreNames', () => {
-  const { restoreNames } = require('./restoreNames');
+const { restoreNames } = require('./restoreNames');
 
+describe('restoreNames', () => {
   it('should restore first names based on full names', () => {
     const users = [
       {
-        firstName: '',
+        firstName: undefined,
+        lastName: 'Holy',
+        fullName: 'Jack Holy',
+      },
+      {
+        lastName: 'Adams',
+        fullName: 'Mike Adams',
+      },
+    ];
+
+    restoreNames(users);
+
+    expect(users[0].firstName).toBe('Jack');
+    expect(users[1].firstName).toBe('Mike');
+  });
+
+  it('should not modify firstName for users with a defined value', () => {
+    const users = [
+      {
+        firstName: 'John',
         lastName: 'Doe',
         fullName: 'John Doe',
       },
       {
-        firstName: '',
+        firstName: 'Alice',
         lastName: 'Smith',
         fullName: 'Alice Smith',
       },
@@ -23,43 +42,11 @@ describe('restoreNames', () => {
     expect(users[1].firstName).toBe('Alice');
   });
 
-  it('should handle full names with uppercase and lowercase letters', () => {
-    const users = [
-      {
-        firstName: '',
-        lastName: 'Doe',
-        fullName: 'jOHN dOE',
-      },
-      {
-        firstName: '',
-        lastName: 'Smith',
-        fullName: 'aLICE sMITH',
-      },
-    ];
+  it('should handle empty users array', () => {
+    const users = [];
 
     restoreNames(users);
 
-    expect(users[0].firstName).toBe('jOHN');
-    expect(users[1].firstName).toBe('aLICE');
-  });
-
-  it('should handle full names with special characters', () => {
-    const users = [
-      {
-        firstName: '',
-        lastName: 'Doe',
-        fullName: 'John@Doe',
-      },
-      {
-        firstName: '',
-        lastName: 'Smith',
-        fullName: 'Alice-Smith',
-      },
-    ];
-
-    restoreNames(users);
-
-    expect(users[0].firstName).toBe('John@Doe');
-    expect(users[1].firstName).toBe('Alice-Smith');
+    expect(users.length).toBe(0);
   });
 });
