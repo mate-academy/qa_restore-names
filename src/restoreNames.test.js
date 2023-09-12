@@ -52,7 +52,7 @@ describe('restoreNames', () => {
     ]);
   });
 
-  it('should restore firstName for users with undefined', () => {
+  it('should restore firstName for users with empty braces', () => {
     const users = [
       {
         firstName: '',
