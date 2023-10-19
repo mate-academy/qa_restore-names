@@ -2,18 +2,6 @@
 
 const { restoreNames } = require("./restoreNames");
 
-// Updated restoreNames function
-function restoreNames(users) {
-  return users.map((user) => {
-    if (user.firstName === undefined) {
-      const fullNameParts = user.fullName.split(" ");
-      user.firstName = fullNameParts[0];
-    }
-    return user;
-  });
-}
-
-// Updated test suite
 describe("restoreNames", () => {
   it("should set correct firstName for users with undefined firstName", () => {
     const users = [
