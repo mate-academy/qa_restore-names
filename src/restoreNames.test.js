@@ -16,10 +16,10 @@ describe('restoreNames', () => {
       },
     ];
 
-    restoreNames(users);
+    const modifiedUsers = restoreNames(users);
 
-    expect(users[0].firstName).toBe('Jack');
-    expect(users[1].firstName).toBe('Mike');
+    expect(modifiedUsers[0].firstName).toBe('Jack');
+    expect(modifiedUsers[1].firstName).toBe('Mike');
   });
 
   it('should not modify firstName for users with defined firstName', () => {
@@ -36,18 +36,18 @@ describe('restoreNames', () => {
       },
     ];
 
-    restoreNames(users);
+    const modifiedUsers = restoreNames(users);
 
-    expect(users[0].firstName).toBe('John');
-    expect(users[1].firstName).toBe('Alice');
+    expect(modifiedUsers[0].firstName).toBe('John');
+    expect(modifiedUsers[1].firstName).toBe('Alice');
   });
 
   it('should handle an empty array', () => {
     const users = [];
 
-    restoreNames(users);
+    const modifiedUsers = restoreNames(users);
 
-    expect(users.length).toBe(0);
+    expect(modifiedUsers.length).toBe(0);
   });
 
   it('should handle users with null firstName', () => {
@@ -64,9 +64,9 @@ describe('restoreNames', () => {
       },
     ];
 
-    restoreNames(users);
+    const modifiedUsers = restoreNames(users);
 
-    expect(users[0].firstName).toBe('John');
-    expect(users[1].firstName).toBe('Alice');
+    expect(modifiedUsers[0].firstName).toBe('John');
+    expect(modifiedUsers[1].firstName).toBe('Alice');
   });
 });
