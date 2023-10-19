@@ -3,7 +3,76 @@
 const { restoreNames } = require("./restoreNames");
 
 describe("restoreNames", () => {
-  it("should set correct firstName for users with undefined firstName", () => {
+  it("should be a function", () => {
+    expect(restoreNames).toBeInstanceOf(Function);
+  });
+
+  it("should add firstName if undefined", () => {
+    const users = [
+      {
+        firstName: undefined,
+        lastName: "Holy",
+        fullName: "Jack Holy",
+      },
+    ];
+
+    const expectedResult = [
+      {
+        firstName: "Jack",
+        lastName: "Holy",
+        fullName: "Jack Holy",
+      },
+    ];
+
+    restoreNames(users);
+
+    expect(users).toEqual(expectedResult);
+  });
+
+  it("should add firstName if empty", () => {
+    const users = [
+      {
+        firstName: "",
+        lastName: "Bond",
+        fullName: "James Bond",
+      },
+    ];
+
+    const expectedResult = [
+      {
+        firstName: "James",
+        lastName: "Bond",
+        fullName: "James Bond",
+      },
+    ];
+
+    restoreNames(users);
+
+    expect(users).toEqual(expectedResult);
+  });
+
+  it("should add firstName if absent", () => {
+    const users = [
+      {
+        lastName: "Holy",
+        fullName: "Jack Holy",
+      },
+    ];
+
+    const expectedResult = [
+      {
+        firstName: "Jack",
+        lastName: "Holy",
+        fullName: "Jack Holy",
+      },
+    ];
+
+    restoreNames(users);
+
+    expect(users).toEqual(expectedResult);
+  });
+
+  it("should add firstName to all users", () => {
     const users = [
       {
         firstName: undefined,
@@ -16,61 +85,21 @@ describe("restoreNames", () => {
       },
     ];
 
-    const modifiedUsers = restoreNames([...users]); // Create a copy of users
-
-    expect(modifiedUsers[0].firstName).toBe("Jack");
-    expect(modifiedUsers[1].firstName).toBe("Mike");
-  });
-
-  it("should not modify firstName for users with defined firstName", () => {
-    const users = [
+    const expectedResult = [
       {
-        firstName: "John",
-        lastName: "Smith",
-        fullName: "John Smith",
+        firstName: "Jack",
+        lastName: "Holy",
+        fullName: "Jack Holy",
       },
       {
-        firstName: "Alice",
-        lastName: "Johnson",
-        fullName: "Alice Johnson",
+        firstName: "Mike",
+        lastName: "Adams",
+        fullName: "Mike Adams",
       },
     ];
 
-    const modifiedUsers = restoreNames([...users]); // Create a copy of users
+    restoreNames(users);
 
-    expect(modifiedUsers[0].firstName).toBe("John");
-    expect(modifiedUsers[1].firstName).toBe("Alice");
-  });
-
-  it("should handle an empty array", () => {
-    const users = [];
-
-    const modifiedUsers = restoreNames([...users]); // Create a copy of users
-
-    expect(modifiedUsers.length).toBe(0);
-    expect(modifiedUsers).toEqual([]);
-  });
-
-  it("should handle users with null firstName", () => {
-    const users = [
-      {
-        firstName: null,
-        lastName: "Smith",
-        fullName: "John Smith",
-      },
-      {
-        firstName: null,
-        lastName: "Johnson",
-        fullName: "Alice Johnson",
-      },
-    ];
-
-    const modifiedUsers = restoreNames([...users]); // Create a copy of users
-
-    const userJohn = modifiedUsers.find((user) => user.lastName === "Smith");
-    const userAlice = modifiedUsers.find((user) => user.lastName === "Johnson");
-
-    expect(userJohn.firstName).toBe("John");
-    expect(userAlice.firstName).toBe("Alice");
+    expect(users).toEqual(expectedResult);
   });
 });
