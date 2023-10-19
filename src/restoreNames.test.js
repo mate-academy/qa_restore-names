@@ -16,7 +16,7 @@ describe("restoreNames", () => {
       },
     ];
 
-    const modifiedUsers = restoreNames(users);
+    const modifiedUsers = restoreNames([...users]); // Create a copy of users
 
     expect(modifiedUsers[0].firstName).toBe("Jack");
     expect(modifiedUsers[1].firstName).toBe("Mike");
@@ -36,7 +36,7 @@ describe("restoreNames", () => {
       },
     ];
 
-    const modifiedUsers = restoreNames(users);
+    const modifiedUsers = restoreNames([...users]); // Create a copy of users
 
     expect(modifiedUsers[0].firstName).toBe("John");
     expect(modifiedUsers[1].firstName).toBe("Alice");
@@ -45,10 +45,10 @@ describe("restoreNames", () => {
   it("should handle an empty array", () => {
     const users = [];
 
-    const modifiedUsers = restoreNames(users);
+    const modifiedUsers = restoreNames([...users]); // Create a copy of users
 
     expect(modifiedUsers.length).toBe(0);
-    expect(modifiedUsers).toEqual([]); // Additional check for an empty array
+    expect(modifiedUsers).toEqual([]);
   });
 
   it("should handle users with null firstName", () => {
@@ -65,7 +65,7 @@ describe("restoreNames", () => {
       },
     ];
 
-    const modifiedUsers = restoreNames(users);
+    const modifiedUsers = restoreNames([...users]); // Create a copy of users
 
     const userJohn = modifiedUsers.find((user) => user.lastName === "Smith");
     const userAlice = modifiedUsers.find((user) => user.lastName === "Johnson");
