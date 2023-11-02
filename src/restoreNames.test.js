@@ -1,21 +1,79 @@
 'use strict';
 
 describe('restoreNames', () => {
-  // const { restoreNames } = require('./restoreNames');
   const { restoreNames } = require('./restoreNames');
-  const correctUsers = [{
-    firstName: 'Jack',
-    lastName: 'Holy',
-    fullName: 'Jack Holy',
-  },
-  {
-    firstName: 'Mike',
-    lastName: 'Adams',
-    fullName: 'Mike Adams',
-  },
-  ];
 
-  it('should ', () => {
+  it('should be a function', () => {
+    expect(restoreNames)
+      .toBeInstanceOf(Function);
+  });
+
+  it('should add firstname if its undefined', () => {
+    const users = [
+      {
+        firstName: undefined,
+        lastName: 'Holy',
+        fullName: 'Jack Holy',
+      },
+    ];
+    const expectedResult = [
+      {
+        firstName: 'Jack',
+        lastName: 'Holy',
+        fullName: 'Jack Holy',
+      },
+    ];
+
+    restoreNames(users);
+
+    expect(users)
+      .toEqual(expectedResult);
+  });
+
+  it('should add firstname if its empty string', () => {
+    const users = [
+      {
+        firstName: '',
+        lastName: 'Holy',
+        fullName: 'Jack Holy',
+      },
+    ];
+    const expectedResult = [
+      {
+        firstName: 'Jack',
+        lastName: 'Holy',
+        fullName: 'Jack Holy',
+      },
+    ];
+
+    restoreNames(users);
+
+    expect(users)
+      .toEqual(expectedResult);
+  });
+
+  it('should add firstname if its absent', () => {
+    const users = [
+      {
+        lastName: 'Holy',
+        fullName: 'Jack Holy',
+      },
+    ];
+    const expectedResult = [
+      {
+        firstName: 'Jack',
+        lastName: 'Holy',
+        fullName: 'Jack Holy',
+      },
+    ];
+
+    restoreNames(users);
+
+    expect(users)
+      .toEqual(expectedResult);
+  });
+
+  it('should add firstname to all users', () => {
     const users = [
       {
         firstName: undefined,
@@ -28,23 +86,22 @@ describe('restoreNames', () => {
       },
     ];
 
-    it('should be declared', () => {
-      expect(restoreNames)
-        .toBeInstanceOf(Function);
-    });
+    const expectedResult = [
+      {
+        firstName: 'Jack',
+        lastName: 'Holy',
+        fullName: 'Jack Holy',
+      },
+      {
+        firstName: 'Mike',
+        lastName: 'Adams',
+        fullName: 'Mike Adams',
+      },
+    ];
 
-    it('should add correct firstName if it is undefined', () => {
-      restoreNames(users);
+    restoreNames(users);
 
-      expect(users[0].firstName)
-        .toBe(correctUsers[0].firstName);
-    });
-
-    it('should add correct firstName if it does not exist', () => {
-      restoreNames(users);
-
-      expect(users[1].firstName)
-        .toBe(correctUsers[1].firstName);
-    });
+    expect(users)
+      .toEqual(expectedResult);
   });
 });
