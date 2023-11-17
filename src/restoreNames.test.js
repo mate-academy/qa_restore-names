@@ -37,5 +37,27 @@ describe('restoreNames', () => {
     restoreNames(users);
     expect(users[0].firstName).toBe('John');
   });
+it('should work with multiple objects', () => {
+    const users = [
+      {
+        firstName: undefined,
+        lastName: 'Holy',
+        fullName: 'Jack Holy',
+      },
+      {
+        lastName: 'Adams',
+        fullName: 'Mike Adams',
+      },
+    ];
+    restoreNames(users);
+    expect(users[0].firstName).toBe('Jack');
+    expect(users[1].firstName).toBe('Mike');
+  });
+
+  it('should return an empty array when input is an empty array', () => {
+    const users = [];
+    restoreNames(users);
+    expect(users).toEqual([]);
+  });
 });
 
