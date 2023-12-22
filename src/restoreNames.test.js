@@ -29,7 +29,9 @@ describe('restoreNames', () => {
       },
     ];
 
-    expect(restoreNames(users)).toEqual(expected);
+    restoreNames(users);
+
+    expect(users).toEqual(expected);
   });
 
   it('should left the same firstName if it is', () => {
@@ -49,7 +51,9 @@ describe('restoreNames', () => {
       },
     ];
 
-    expect(restoreNames(users)).toEqual(expected);
+    restoreNames(users);
+
+    expect(users).toEqual(expected);
   });
 
   it('should return empty array for empty array', () => {
