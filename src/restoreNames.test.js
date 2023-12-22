@@ -57,6 +57,8 @@ describe('restoreNames', () => {
 
     const users = [];
 
-    expect(restoreNames(users)).toEqual(expected);
+    restoreNames(users);
+
+    expect(users).toEqual(expected);
   });
 });
