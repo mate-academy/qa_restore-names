@@ -1,9 +1,10 @@
 'use strict';
 
-describe('restoreNames should restore "firstName field"', () => {
+describe('restoreNames"', () => {
   const { restoreNames } = require('./restoreNames');
 
-  it('user.firstName has undefined value', () => {
+  // eslint-disable-next-line max-len
+  it('should restore firstName field when user.firstName has undefined value', () => {
     const userToRestoring = [{
       firstName: undefined,
       lastName: 'Holy',
@@ -21,7 +22,7 @@ describe('restoreNames should restore "firstName field"', () => {
     expect(userToRestoring).toEqual(userAfterRestoring);
   });
 
-  it('user.firstName.length === 0', () => {
+  it('user doesn\'t have the firstName property', () => {
     const userToRestoring = [{
       lastName: 'Uzumaki',
       fullName: 'Naruto Uzumaki',
@@ -38,7 +39,7 @@ describe('restoreNames should restore "firstName field"', () => {
     expect(userToRestoring).toEqual(userAfterRestoring);
   });
 
-  it('user doesn\'t have the firstName property', () => {
+  it('user.firstName.length === 0', () => {
     const userToRestoring = [{
       firstName: '',
       lastName: 'Adams',
