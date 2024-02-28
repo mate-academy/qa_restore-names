@@ -36,34 +36,42 @@ describe('restoreNames', () => {
     ]);
   });
 
-  it(`should not modify firstName
-  for users with firstName already defined`, () => {
-    const users = [
-      {
-        firstName: 'John',
-        lastName: 'Doe',
-        fullName: 'John Doe',
-      },
-      {
-        firstName: 'Alice',
-        lastName: 'Smith',
-        fullName: 'Alice Smith',
-      },
-    ];
+  it('should not modify firstName for users with firstName already defined',
+    () => {
+      const users = [
+        {
+          firstName: 'John',
+          lastName: 'Doe',
+          fullName: 'John Doe',
+        },
+        {
+          firstName: 'Alice',
+          lastName: 'Smith',
+          fullName: 'Alice Smith',
+        },
+      ];
+
+      restoreNames(users);
+
+      expect(users).toEqual([
+        {
+          firstName: 'John',
+          lastName: 'Doe',
+          fullName: 'John Doe',
+        },
+        {
+          firstName: 'Alice',
+          lastName: 'Smith',
+          fullName: 'Alice Smith',
+        },
+      ]);
+    });
+
+  it('should work with an empty array', () => {
+    const users = [];
 
     restoreNames(users);
 
-    expect(users).toEqual([
-      {
-        firstName: 'John',
-        lastName: 'Doe',
-        fullName: 'John Doe',
-      },
-      {
-        firstName: 'Alice',
-        lastName: 'Smith',
-        fullName: 'Alice Smith',
-      },
-    ]);
+    expect(users).toEqual([]);
   });
 });
