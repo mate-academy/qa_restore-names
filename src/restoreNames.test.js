@@ -3,6 +3,10 @@
 describe('restoreNames', () => {
   const { restoreNames } = require('./restoreNames');
 
+  it('should be declared', () => {
+    expect(restoreNames).toBeInstanceOf(Function);
+  });
+
   it(`should restore when 'firstName' is 'undefined'`, () => {
     const users = [
       {
