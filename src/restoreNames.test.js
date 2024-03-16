@@ -203,7 +203,7 @@ describe('restoreNames', () => {
     + ` with defined firstName`, () => {
     const users = [
       {
-        firstName: 'John',
+        firstName: 'Joe',
         lastName: 'Doe',
         fullName: 'John Doe',
       },
@@ -213,7 +213,7 @@ describe('restoreNames', () => {
         fullName: 'Alice Smith',
       },
       {
-        firstName: 'Bob',
+        firstName: 'Johnson',
         lastName: 'Johnson',
         fullName: 'Bob Johnson',
       },
@@ -228,7 +228,7 @@ describe('restoreNames', () => {
 
     expect(users).toEqual([
       {
-        firstName: 'John',
+        firstName: 'Joe',
         lastName: 'Doe',
         fullName: 'John Doe',
       },
@@ -238,7 +238,7 @@ describe('restoreNames', () => {
         fullName: 'Alice Smith',
       },
       {
-        firstName: 'Bob',
+        firstName: 'Johnson',
         lastName: 'Johnson',
         fullName: 'Bob Johnson',
       },
