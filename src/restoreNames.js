@@ -8,6 +8,7 @@
  *
  * @param {User[]} users
  */
+
 function restoreNames(users) {
   for (const user of users) {
     if (!user.firstName) {
