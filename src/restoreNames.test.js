@@ -3,7 +3,7 @@
 const { restoreNames } = require('./restoreNames');
 
 describe('restoreNames', () => {
-  it('should set correct firstName to users with undefined firstName', () => {
+  it('should set firstName if it is undefined', () => {
     const users = [
       {
         firstName: undefined,
@@ -42,7 +42,7 @@ describe('restoreNames', () => {
     ]);
   });
 
-  it('should set correct firstName to users with firstName equal to undefined', () => {
+  it('set correct first Name for users with undefined name', () => {
     const users = [
       {
         firstName: undefined,
