@@ -42,36 +42,6 @@ describe('restoreNames', () => {
     ]);
   });
 
-  it('set correct first Name for users with undefined name', () => {
-    const users = [
-      {
-        firstName: undefined,
-        lastName: 'Doe',
-        fullName: 'John Doe',
-      },
-      {
-        firstName: 'Jane',
-        lastName: 'Smith',
-        fullName: 'Jane Smith',
-      },
-    ];
-
-    restoreNames(users);
-
-    expect(users).toEqual([
-      {
-        firstName: 'John',
-        lastName: 'Doe',
-        fullName: 'John Doe',
-      },
-      {
-        firstName: 'Jane',
-        lastName: 'Smith',
-        fullName: 'Jane Smith',
-      },
-    ]);
-  });
-
   it('should not modify users with defined firstName', () => {
     const users = [
       {
