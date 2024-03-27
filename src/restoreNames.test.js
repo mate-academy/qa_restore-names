@@ -73,7 +73,7 @@ describe('restoreNames', () => {
     ]);
   });
 
-  it('should restor first names when they are empty strings', () => {
+  it('should restore first names when they are empty strings', () => {
     const users = [
       {
         firstName: '',
