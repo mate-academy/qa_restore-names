@@ -10,8 +10,11 @@
  */
 function restoreNames(users) {
   for (const user of users) {
-    if (!user.firstName) {
-      [user.firstName] = user.fullName.split(' ');
+    if (!user.firstName && user.fullName) {
+      const parts = user.fullName.split(' ');
+
+      user.firstName = parts.shift(); // Витягуємо перше слово
+      user.lastName = parts.join(' '); // Об'єднуємо решту слів
     }
   }
 }
