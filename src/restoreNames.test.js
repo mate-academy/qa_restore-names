@@ -1,11 +1,32 @@
 'use strict';
 
 describe('restoreNames', () => {
-  // const { restoreNames } = require('./restoreNames');
+  const { restoreNames } = require('./restoreNames');
 
-  it('should ', () => {
+  const users = [
+    {
+      firstName: undefined,
+      lastName: 'Holy',
+      fullName: 'Jack Holy',
+    },
+    {
+      lastName: 'Adams',
+      fullName: 'Mike Adams',
+    },
+  ];
 
+  restoreNames(users);
+
+  it('should add first name when firstName === undefined', () => {
+    users.forEach((user) => {
+      if (user.firstName === undefined) {
+        expect(user.firstName).toBeDefined();
+        expect(typeof user.firstName).toBe('string');
+      }
+    });
   });
 
-  // write tests here
+  it("should return 'undefined'", () => {
+    expect(restoreNames(users)).toBe(undefined);
+  });
 });
