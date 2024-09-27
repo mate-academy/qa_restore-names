@@ -1,11 +1,42 @@
 'use strict';
 
 describe('restoreNames', () => {
-  // const { restoreNames } = require('./restoreNames');
+  const { restoreNames } = require('./restoreNames');
 
-  it('should ', () => {
+  it('firstName restored', () => {
+    const users = [
+      {
+        firstName: undefined,
+        lastName: 'Holy',
+        fullName: 'Jack Holy',
+      },
+      {
+        lastName: 'Adams',
+        fullName: 'Mike Adams',
+      },
+    ];
 
+    restoreNames(users);
+
+    for (const user of users) {
+      expect(user).toHaveProperty('firstName');
+      expect(user.firstName).toBeDefined();
+    }
   });
 
-  // write tests here
+  it('fullName is missing', () => {
+    const users = [
+      {
+        firstName: undefined,
+        lastName: 'Holy',
+      },
+      {
+        lastName: 'Adams',
+      },
+    ];
+
+    expect(() => {
+      restoreNames(users);
+    }).toThrow();
+  });
 });
