@@ -10,10 +10,12 @@
  */
 function restoreNames(users) {
   for (const user of users) {
-    if (!user.firstName) {
+    if (!user.firstName && user.fullName) {
       [user.firstName] = user.fullName.split(' ');
     }
   }
+
+  return users;
 }
 
 module.exports = { restoreNames };
