@@ -9,8 +9,16 @@
  * @param {User[]} users
  */
 function restoreNames(users) {
+  if (!Array.isArray(users)) {
+    throw new Error('Users must be an array with users');
+  }
+
   for (const user of users) {
-    if (!user.firstName) {
+    if (typeof user !== 'object' || Array.isArray(user) || !user) {
+      throw new Error('User must be an object with fullName');
+    }
+
+    if (!user.firstName || typeof user.firstName !== 'string') {
       [user.firstName] = user.fullName.split(' ');
     }
   }
