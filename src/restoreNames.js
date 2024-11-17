@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * @typedef {Object} User
@@ -9,9 +9,13 @@
  * @param {User[]} users
  */
 function restoreNames(users) {
+  if (!Array.isArray(users) || !users.length) {
+    return [];
+  }
+
   for (const user of users) {
     if (!user.firstName) {
-      [user.firstName] = user.fullName.split(' ');
+      [user.firstName] = user.fullName.split(" ");
     }
   }
 }
