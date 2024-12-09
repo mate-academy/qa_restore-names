@@ -14,29 +14,30 @@
 const users = [
   {
     firstName: undefined,
-    lastName: 'Holy',
-    fullName: 'Jack Holy',
+    lastName: "Holy",
+    fullName: "Jack Holy",
   },
   {
-    lastName: 'Adams',
-    fullName: 'Mike Adams',
+    lastName: "Adams",
+    fullName: "Mike Adams",
   },
 ];
 
 restoreNames(users);
 
-// users === [
-  {
-    firstName: 'Jack',
-    lastName: 'Holy',
-    fullName: 'Jack Holy',
-  },
-  {
-    firstName: 'Mike',
-    lastName: 'Adams',
-    fullName: 'Mike Adams',
-  },
-];
+users ===
+  [
+    {
+      firstName: "Jack",
+      lastName: "Holy",
+      fullName: "Jack Holy",
+    },
+    {
+      firstName: "Mike",
+      lastName: "Adams",
+      fullName: "Mike Adams",
+    },
+  ];
 ```
 
 ---
