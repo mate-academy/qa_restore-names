@@ -10,8 +10,8 @@
  */
 function restoreNames(users) {
   for (const user of users) {
-    if (!user.firstName) {
-      [user.firstName] = user.fullName.split(' ');
+    if (!user.firstName && user.fullName) {
+      [user.firstName] = user.fullName.trim().split(' ');
     }
   }
 }
