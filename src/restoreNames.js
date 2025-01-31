@@ -10,8 +10,10 @@
  */
 function restoreNames(users) {
   for (const user of users) {
-    if (!user.firstName) {
-      [user.firstName] = user.fullName.split(' ');
+    if (!user.firstName && user.fullName) {
+      const nameParts = user.fullName.trim().split(/\s+/);
+
+      user.firstName = nameParts.length > 0 ? nameParts[0] : undefined;
     }
   }
 }
