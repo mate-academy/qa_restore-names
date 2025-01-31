@@ -101,15 +101,25 @@ describe('restoreNames', () => {
           lastName: 'Doe',
           fullName: 'Jane Mary Doe',
         },
+        {
+          firstName: undefined,
+          lastName: 'Brown',
+          fullName: '   Tom    Henry   Brown   ',
+        },
       ];
 
       restoreNames(users);
 
       expect(users).toEqual([
         {
-          firstName: 'Jane',
+          firstName: 'Jane', // Takes only the first part
           lastName: 'Doe',
           fullName: 'Jane Mary Doe',
+        },
+        {
+          firstName: 'Tom', // Correctly trims and extracts "Tom"
+          lastName: 'Brown',
+          fullName: '   Tom    Henry   Brown   ',
         },
       ]);
     }
