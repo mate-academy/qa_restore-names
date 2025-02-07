@@ -24,7 +24,7 @@ const users = [
 
 restoreNames(users);
 
-// users === [
+users === [
   {
     firstName: 'Jack',
     lastName: 'Holy',
