@@ -47,21 +47,22 @@ describe('restoreNames', () => {
       },
     ];
 
-    const originalUsers = JSON.parse(JSON.stringify(users));
+    // eslint-disable-next-line max-len
+    const originalUsers = JSON.parse(JSON.stringify(users)); // Kopiujemy strukturę
 
     restoreNames(users);
 
     expect(users).toEqual(originalUsers);
   });
 
-  it('should handle empty array without errors', () => {
+  it('should handle an empty array without errors', () => {
     const users = [];
 
     restoreNames(users);
     expect(users).toEqual([]);
   });
 
-  it('should correctly handle users firstName but present fullName', () => {
+  it('should correctly restore firstName when only fullName is present', () => {
     const users = [
       {
         lastName: 'White',
@@ -95,7 +96,7 @@ describe('restoreNames', () => {
       {
         firstName: undefined,
         lastName: 'Stark',
-        fullName: 'Tony  Stark',
+        fullName: 'Tony  Stark', // Podwójna spacja między imieniem a nazwiskiem
       },
     ];
 
