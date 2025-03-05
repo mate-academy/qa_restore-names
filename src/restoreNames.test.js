@@ -19,7 +19,7 @@ describe('restoreNames', () => {
     },
   ];
 
-  it('should return nothing', () => {
+  it('should not return a value', () => {
     const result = restoreNames(users);
 
     expect(result).toBeUndefined();
