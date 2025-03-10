@@ -21,7 +21,7 @@ describe('restoreNames', () => {
     ]);
   });
 
-  it('should not change first names', () => {
+  it('should not change existing first names', () => {
     const users = [
       {
         firstName: 'John', fullName: 'John Doe',
@@ -44,6 +44,24 @@ describe('restoreNames', () => {
   });
 
   it('should restore first names from full names with multiple parts', () => {
+    const users = [
+      { fullName: 'Jack Holy' },
+      { fullName: 'Mike Adams' },
+    ];
+
+    restoreNames(users);
+
+    expect(users).toEqual([
+      {
+        firstName: 'Jack', fullName: 'Jack Holy',
+      },
+      {
+        firstName: 'Mike', fullName: 'Mike Adams',
+      },
+    ]);
+  });
+
+  it('should handle cases, firstName is missing', () => {
     const users = [
       { fullName: 'Jack Holy' },
       { fullName: 'Mike Adams' },
