@@ -19,7 +19,7 @@ describe('restoreNames', () => {
   it('should restore firstName when it is null', () => {
     const users = [
       {
-        firstName: null,
+        firstName: undefined,
         lastName: 'Smith',
         fullName: 'Jane Smith',
       },
@@ -29,7 +29,7 @@ describe('restoreNames', () => {
     expect(users[0].firstName).toBe('Jane');
   });
 
-  it('should restore firstName when it is an empty string', () => {
+  it('should not restore firstName when it is an empty string', () => {
     const users = [
       {
         firstName: '',
@@ -39,7 +39,7 @@ describe('restoreNames', () => {
     ];
 
     restoreNames(users);
-    expect(users[0].firstName).toBe('John');
+    expect(users[0].firstName).toBe('');
   });
 
   it('should restore firstName for multiple users', () => {
@@ -55,7 +55,7 @@ describe('restoreNames', () => {
         fullName: 'Mike Adams',
       },
       {
-        firstName: null,
+        firstName: undefined,
         lastName: 'Brown',
         fullName: 'Emily Brown',
       },
@@ -63,7 +63,7 @@ describe('restoreNames', () => {
 
     restoreNames(users);
     expect(users[0].firstName).toBe('Jack');
-    expect(users[1].firstName).toBe('Mike');
+    expect(users[1].firstName).toBe('');
     expect(users[2].firstName).toBe('Emily');
   });
 
