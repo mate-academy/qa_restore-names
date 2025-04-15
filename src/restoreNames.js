@@ -6,10 +6,10 @@
  * @property {string} lastName
  * @property {string} fullName
  *
- * @param {User[]} users
+ * @param {User[]} userList
  */
-function restoreNames(users) {
-  for (const user of users) {
+function restoreNames(userList) {
+  for (const user of userList) {
     if (!user.firstName) {
       [user.firstName] = user.fullName.split(' ');
     }
