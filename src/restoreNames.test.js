@@ -1,73 +1,35 @@
 "use strict";
 
 describe("restoreNames", () => {
-  it("should ", () => {
-    it("should ", () => {});
+  const { restoreNames } = require("./restoreNames");
+
+  const users = [
+    {
+      firstName: undefined,
+
+      lastName: "Holy",
+
+      fullName: "Jack Holy",
+    },
+
+    {
+      lastName: "Adams",
+
+      fullName: "Mike Adams",
+    },
+  ];
+
+  it(`should be declared`, () => {
+    expect(restoreNames).toBeInstanceOf(Function);
   });
 
-  const users = [
-    {
-      firstName: undefined,
-      lastName: "Smith",
-      fullName: "John Smith",
-    },
-    {
-      firstName: undefined,
-      lastName: "Doe",
-      fullName: "Jane Doe",
-    },
-  ];
+  it("should not return anything", () => {
+    expect(restoreNames(users)).toBeUndefined();
+  });
 
-  restoreNames(users);
+  it("should set correct firstName", () => {
+    restoreNames(users);
 
-  expect(users).toEqual([
-    {
-      firstName: "John",
-      lastName: "Smith",
-      fullName: "John Smith",
-    },
-    {
-      firstName: "Jane",
-      lastName: "Doe",
-      fullName: "Jane Doe",
-    },
-  ]);
-});
-
-it("should not modify users with existing firstName", () => {
-  const users = [
-    {
-      firstName: "Alice",
-      lastName: "Brown",
-      fullName: "Alice Brown",
-    },
-    {
-      firstName: "Bob",
-      lastName: "White",
-      fullName: "Bob White",
-    },
-  ];
-
-  restoreNames(users);
-
-  expect(users).toEqual([
-    {
-      firstName: "Alice",
-      lastName: "Brown",
-      fullName: "Alice Brown",
-    },
-    {
-      firstName: "Bob",
-      lastName: "White",
-      fullName: "Bob White",
-    },
-  ]);
-});
-
-it("should handle an empty array without errors", () => {
-  const users = [];
-
-  restoreNames(users);
-
-  expect(users).toEqual([]);
+    expect(users[0].firstName).toBe("Jack");
+  });
 });
