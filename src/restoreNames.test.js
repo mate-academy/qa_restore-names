@@ -2,13 +2,10 @@
 
 describe("restoreNames", () => {
   describe("restoreNames", () => {
-    // const { restoreNames } = require('./restoreNames');	  const { restoreNames } = require('./restoreNames');
-
     it("should ", () => {
       it("should ", () => {});
     });
 
-    // write tests here	  it('should restore missing firstName from fullName', () => {
     const users = [
       {
         firstName: undefined,
