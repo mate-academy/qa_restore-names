@@ -1,6 +1,6 @@
 'use strict';
 
-const { restoreNames } = require('./restoreNames');
+const { restoreNames } = require('../src/restoreNames');
 
 describe('restoreNames', () => {
   it('should restore firstName if it is undefined', () => {
