@@ -1,7 +1,5 @@
 'use strict';
 
-const { restoreNames } = require('../src/restoreNames');
-
 describe('restoreNames', () => {
   it('should restore firstName if it is undefined', () => {
     const users = [
