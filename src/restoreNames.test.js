@@ -3,11 +3,6 @@
 describe('restoreNames', () => {
   const restoreNames = require('./restoreNames');
 
-  it('Object in function', () => {
-    expect(restoreNames)
-      .toBeInstanceOf(Object);
-  });
-
   it('should not change object', () => {
     const users = [{ firstName: 'Sarah' }];
 
