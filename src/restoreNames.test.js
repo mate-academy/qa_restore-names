@@ -1,43 +1,43 @@
-"use strict";
+'use strict';
 
-describe("restoreNames", () => {
-  const { restoreNames } = require("./restoreNames");
+describe('restoreNames', () => {
+  const { restoreNames } = require('./restoreNames');
 
-  it("should restore name, if it is lost", () => {
+  it('should restore name, if it is lost', () => {
     const users = [
       {
         firstName: undefined,
-        lastName: "Holy",
-        fullName: "Jack Holy",
+        lastName: 'Holy',
+        fullName: 'Jack Holy',
       },
       {
-        lastName: "Adams",
-        fullName: "Mike Adams",
+        lastName: 'Adams',
+        fullName: 'Mike Adams',
       },
 
       {
-        firstName: "Joe",
-        lastName: "Doe",
-        fullName: "Joe Doe",
+        firstName: 'Joe',
+        lastName: 'Doe',
+        fullName: 'Joe Doe',
       },
     ];
 
     const expectedUsers = [
       {
-        firstName: "Jack",
-        lastName: "Holy",
-        fullName: "Jack Holy",
+        firstName: 'Jack',
+        lastName: 'Holy',
+        fullName: 'Jack Holy',
       },
       {
-        firstName: "Mike",
-        lastName: "Adams",
-        fullName: "Mike Adams",
+        firstName: 'Mike',
+        lastName: 'Adams',
+        fullName: 'Mike Adams',
       },
 
       {
-        firstName: "Joe",
-        lastName: "Doe",
-        fullName: "Joe Doe",
+        firstName: 'Joe',
+        lastName: 'Doe',
+        fullName: 'Joe Doe',
       },
     ];
 
@@ -46,12 +46,12 @@ describe("restoreNames", () => {
     expect(users).toEqual(expectedUsers);
   });
 
-  it("should not modify users with existing firstName", () => {
+  it('should not modify users with existing firstName', () => {
     const users = [
       {
-        firstName: "John",
-        lastName: "Doe",
-        fullName: "John Doe",
+        firstName: 'John',
+        lastName: 'Doe',
+        fullName: 'John Doe',
       },
     ];
 
@@ -61,7 +61,7 @@ describe("restoreNames", () => {
     expect(users).toEqual(expected);
   });
 
-  it("should handle empty array", () => {
+  it('should handle empty array', () => {
     const users = [];
     const expected = [];
 
