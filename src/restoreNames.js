@@ -15,5 +15,4 @@ function restoreNames(users) {
     }
   }
 }
-
 module.exports = { restoreNames };
