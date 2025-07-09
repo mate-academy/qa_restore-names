@@ -4,26 +4,48 @@ describe('restoreNames', () => {
   const { restoreNames } = require('./restoreNames');
 
   it('should do nothing if firstName is set', () => {
-    const result = restoreNames([
+    const users = [
       {
         firstName: 'dupa',
         lastName: 'mucha',
         fullName: 'dupa mucha',
       },
-    ]);
+      {
+        firstName: 'a',
+        lastName: 'b',
+        fullName: 'a b',
+      },
+    ];
 
-    expect(result).toEqual(result);
+    restoreNames(users);
+
+    const expected = [
+      {
+        firstName: 'dupa',
+        lastName: 'mucha',
+        fullName: 'dupa mucha',
+      },
+      {
+        firstName: 'a',
+        lastName: 'b',
+        fullName: 'a b',
+      },
+    ];
+
+    expect(users).toEqual(expected);
   });
 
   it('should set firstName if !firstName', () => {
-    const result = restoreNames([
+    const users = [
       {
         firstName: '',
         lastName: 'mucha',
         fullName: 'dupa mucha',
       },
-    ]);
+    ];
 
-    expect(result).toEqual(result);
+    restoreNames(users);
+
+    expect(users[0].firstName).toBe('dupa');
   });
 });
