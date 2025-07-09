@@ -1,11 +1,29 @@
 'use strict';
 
 describe('restoreNames', () => {
-  // const { restoreNames } = require('./restoreNames');
+  const { restoreNames } = require('./restoreNames');
 
-  it('should ', () => {
+  it('should do nothing if firstName is set', () => {
+    const result = restoreNames([
+      {
+        firstName: 'dupa',
+        lastName: 'mucha',
+        fullName: 'dupa mucha',
+      },
+    ]);
 
+    expect(result).toEqual(result);
   });
 
-  // write tests here
+  it('should set firstName if !firstName', () => {
+    const result = restoreNames([
+      {
+        firstName: '',
+        lastName: 'mucha',
+        fullName: 'dupa mucha',
+      },
+    ]);
+
+    expect(result).toEqual(result);
+  });
 });
