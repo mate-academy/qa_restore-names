@@ -2,7 +2,7 @@
 
 /**
  * @typedef {Object} User
- * @property {string} firstName
+ * @property {string | undefined} [firstName]
  * @property {string} lastName
  * @property {string} fullName
  *
