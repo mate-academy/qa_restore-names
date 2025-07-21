@@ -11,7 +11,13 @@
 function restoreNames(users) {
   for (const user of users) {
     if (!user.firstName) {
-      [user.firstName] = user.fullName.split(' ');
+      const objectPattern = {
+        'firstName': user.fullName.split(' ')[0],
+        'lastName': user.lastName,
+        'fullName': user.fullName,
+      };
+
+      Object.assign(user, objectPattern);
     }
   }
 }
