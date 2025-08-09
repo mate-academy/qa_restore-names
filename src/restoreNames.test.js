@@ -17,9 +17,12 @@ describe(`'restoreNames' function`, () => {
     ];
 
     restoreNames(users);
-    expect(users[0].firstName).toBe('Jack');
-    expect(users[0].lastName).toBe('Holy');
-    expect(users[0].fullName).toBe('Jack Holy');
+
+    expect(users[0]).toEqual({
+      firstName: 'Jack',
+      lastName: 'Holy',
+      fullName: 'Jack Holy',
+    });
   });
 
   it(`restore 'firstName' if it is undefined`, () => {
@@ -32,7 +35,12 @@ describe(`'restoreNames' function`, () => {
     ];
 
     restoreNames(users);
-    expect(users[0].firstName).toBe('Jack');
+
+    expect(users[0]).toEqual({
+      firstName: 'Jack',
+      lastName: 'Holy',
+      fullName: 'Jack Holy',
+    });
   });
 
   it(`restore 'firstName' if it does not exist`, () => {
@@ -44,7 +52,12 @@ describe(`'restoreNames' function`, () => {
     ];
 
     restoreNames(users);
-    expect(users[0].firstName).toBe('Jack');
+
+    expect(users[0]).toEqual({
+      firstName: 'Jack',
+      lastName: 'Holy',
+      fullName: 'Jack Holy',
+    });
   });
 
   it(`restore 'firstName' for all users missing it`, () => {
@@ -61,7 +74,25 @@ describe(`'restoreNames' function`, () => {
     ];
 
     restoreNames(users);
-    expect(users[0].firstName).toBe('Jack');
-    expect(users[1].firstName).toBe('Mike');
+
+    expect(users).toEqual([
+      {
+        firstName: 'Jack',
+        lastName: 'Holy',
+        fullName: 'Jack Holy',
+      },
+      {
+        firstName: 'Mike',
+        lastName: 'Adams',
+        fullName: 'Mike Adams',
+      },
+    ]);
+  });
+
+  it('should not modify an empty array', () => {
+    const users = [];
+
+    restoreNames(users);
+    expect(users).toEqual([]);
   });
 });
