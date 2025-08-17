@@ -16,4 +16,6 @@ function restoreNames(users) {
   }
 }
 
-module.exports = { restoreNames };
+module.exports = {
+  restoreNames,
+};
