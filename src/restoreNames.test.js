@@ -6,7 +6,7 @@ describe('restoreNames', () => {
   it('should restore first names from full names', () => {
     const users = [
       {
-        firstName: '',
+        firstName: undefined,
         lastName: 'Doe',
         fullName: 'John Doe',
       },
@@ -16,7 +16,6 @@ describe('restoreNames', () => {
         fullName: 'Jane Smith',
       },
       {
-        firstName: 'Charlie',
         lastName: 'Brown',
         fullName: 'Charlie Brown',
       },
