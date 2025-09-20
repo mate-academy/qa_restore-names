@@ -105,4 +105,35 @@ describe('restoreNames', () => {
       },
     ]);
   });
+
+  it(`should restore 'firstName' in the array with more than one user
+       and not modify users with valid 'firstName'`, () => {
+    const users = [
+      {
+        firstName: undefined,
+        lastName: 'Holy',
+        fullName: 'Jack Holy',
+      },
+      {
+        firstName: 'Mike',
+        lastName: 'Adams',
+        fullName: 'Mike Adams',
+      },
+    ];
+
+    restoreNames(users);
+
+    expect(users).toStrictEqual([
+      {
+        firstName: 'Jack',
+        lastName: 'Holy',
+        fullName: 'Jack Holy',
+      },
+      {
+        firstName: 'Mike',
+        lastName: 'Adams',
+        fullName: 'Mike Adams',
+      },
+    ]);
+  });
 });
