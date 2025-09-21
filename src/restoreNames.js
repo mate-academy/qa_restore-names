@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * @typedef {Object} User
@@ -10,8 +10,11 @@
  */
 function restoreNames(users) {
   for (const user of users) {
-    if (!user.firstName) {
-      [user.firstName] = user.fullName.split(' ');
+    // only restore when firstName is strictly undefined
+    if (user.firstName === undefined) {
+      const [first] = user.fullName.split(" ");
+
+      user.firstName = first;
     }
   }
 }
