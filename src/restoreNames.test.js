@@ -3,7 +3,7 @@
 const { restoreNames } = require("./restoreNames");
 
 describe("restoreNames", () => {
-  it("should restore firstName when it is undefined", () => {
+  it("restores firstName when it is undefined", () => {
     const users = [
       { firstName: undefined, lastName: "Holy", fullName: "Jack Holy" },
     ];
@@ -13,7 +13,7 @@ describe("restoreNames", () => {
     expect(users[0].firstName).toBe("Jack");
   });
 
-  it("should restore firstName when it is missing", () => {
+  it("restores firstName when property is missing", () => {
     const users = [{ lastName: "Adams", fullName: "Mike Adams" }];
 
     restoreNames(users);
@@ -21,7 +21,7 @@ describe("restoreNames", () => {
     expect(users[0].firstName).toBe("Mike");
   });
 
-  it("should not change firstName if it already exists", () => {
+  it("does not change firstName if it already exists", () => {
     const users = [
       { firstName: "Sarah", lastName: "Connor", fullName: "Sarah Connor" },
     ];
@@ -31,7 +31,19 @@ describe("restoreNames", () => {
     expect(users[0].firstName).toBe("Sarah");
   });
 
-  it("should work for multiple users in array", () => {
+  it("does not overwrite empty string or null firstName", () => {
+    const users = [
+      { firstName: "", lastName: "Brown", fullName: "Tom Brown" },
+      { firstName: null, lastName: "Black", fullName: "Tim Black" },
+    ];
+
+    restoreNames(users);
+
+    expect(users[0].firstName).toBe(""); // stays empty string
+    expect(users[1].firstName).toBeNull(); // stays null
+  });
+
+  it("works correctly for multiple users", () => {
     const users = [
       { firstName: undefined, lastName: "Holy", fullName: "Jack Holy" },
       { lastName: "Adams", fullName: "Mike Adams" },
@@ -45,16 +57,5 @@ describe("restoreNames", () => {
       { firstName: "Mike", lastName: "Adams", fullName: "Mike Adams" },
       { firstName: "Anna", lastName: "Smith", fullName: "Anna Smith" },
     ]);
-  });
-
-  it("should not change lastName or fullName", () => {
-    const users = [
-      { firstName: undefined, lastName: "Brown", fullName: "Tom Brown" },
-    ];
-
-    restoreNames(users);
-
-    expect(users[0].lastName).toBe("Brown");
-    expect(users[0].fullName).toBe("Tom Brown");
   });
 });
