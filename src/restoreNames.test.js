@@ -93,5 +93,15 @@ describe('restoreNames', () => {
       { firstName: 'John', lastName: 'Doe', fullName: 'John Michael Doe' },
     ]);
   });
+
+  it('mutates objects in place without replacing them', () => {
+    const user = { firstName: undefined, lastName: 'Holy', fullName: 'Jack Holy' };
+    const users = [user];
+
+    const result = restoreNames(users);
+
+    expect(result).toBeUndefined();
+    expect(users[0]).toBe(user); // identity check
+    expect(users[0].firstName).toBe('Jack');
+  });
 });
-```
