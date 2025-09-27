@@ -8,8 +8,9 @@ describe('restoreNames', () => {
       { firstName: undefined, lastName: 'Holy', fullName: 'Jack Holy' },
     ];
 
-    restoreNames(users);
+    const result = restoreNames(users);
 
+    expect(result).toBeUndefined();
     expect(users).toEqual([
       { firstName: 'Jack', lastName: 'Holy', fullName: 'Jack Holy' },
     ]);
@@ -20,8 +21,9 @@ describe('restoreNames', () => {
       { lastName: 'Adams', fullName: 'Mike Adams' },
     ];
 
-    restoreNames(users);
+    const result = restoreNames(users);
 
+    expect(result).toBeUndefined();
     expect(users).toEqual([
       { firstName: 'Mike', lastName: 'Adams', fullName: 'Mike Adams' },
     ]);
@@ -32,8 +34,9 @@ describe('restoreNames', () => {
       { firstName: 'Sarah', lastName: 'Connor', fullName: 'Sarah Connor' },
     ];
 
-    restoreNames(users);
+    const result = restoreNames(users);
 
+    expect(result).toBeUndefined();
     expect(users).toEqual([
       { firstName: 'Sarah', lastName: 'Connor', fullName: 'Sarah Connor' },
     ]);
@@ -46,8 +49,9 @@ describe('restoreNames', () => {
       { firstName: 'Sarah', lastName: 'Connor', fullName: 'Sarah Connor' },
     ];
 
-    restoreNames(users);
+    const result = restoreNames(users);
 
+    expect(result).toBeUndefined();
     expect(users).toEqual([
       { firstName: 'Jack', lastName: 'Holy', fullName: 'Jack Holy' },
       { firstName: 'Mike', lastName: 'Adams', fullName: 'Mike Adams' },
@@ -60,8 +64,9 @@ describe('restoreNames', () => {
       { lastName: undefined, fullName: 'Madonna' },
     ];
 
-    restoreNames(users);
+    const result = restoreNames(users);
 
+    expect(result).toBeUndefined();
     expect(users).toEqual([
       { firstName: 'Madonna', lastName: undefined, fullName: 'Madonna' },
     ]);
@@ -70,9 +75,23 @@ describe('restoreNames', () => {
   it('does nothing if users array is empty', () => {
     const users = [];
 
-    restoreNames(users);
+    const result = restoreNames(users);
 
+    expect(result).toBeUndefined();
     expect(users).toEqual([]);
   });
-});
 
+  it('handles multi-word fullName with middle names', () => {
+    const users = [
+      { lastName: 'Doe', fullName: 'John Michael Doe' },
+    ];
+
+    const result = restoreNames(users);
+
+    expect(result).toBeUndefined();
+    expect(users).toEqual([
+      { firstName: 'John', lastName: 'Doe', fullName: 'John Michael Doe' },
+    ]);
+  });
+});
+```
