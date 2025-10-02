@@ -1,11 +1,85 @@
-'use strict';
+/* eslint-disable quotes */
+"use strict";
 
-describe('restoreNames', () => {
-  // const { restoreNames } = require('./restoreNames');
+describe("restoreNames", () => {
+  const { restoreNames } = require("./restoreNames");
 
-  it('should ', () => {
-
+  it(`should declared`, () => {
+    expect(restoreNames).toBeInstanceOf(Function);
   });
 
-  // write tests here
+  it("should restore firstName from fullName", () => {
+    const users = [
+      {
+        firstName: undefined,
+        lastName: "Doe",
+        fullName: "John Doe",
+      },
+    ];
+
+    restoreNames(users);
+
+    expect(users[0].firstName).toEqual("John");
+  });
+
+  it("should not override existing firstName", () => {
+    const users = [
+      {
+        firstName: "Jane",
+        lastName: "Doe",
+        fullName: "John Doe",
+      },
+    ];
+
+    restoreNames(users);
+
+    expect(users[0].firstName).toEqual("Jane");
+  });
+
+  it("should handle multiple users", () => {
+    const users = [
+      {
+        firstName: undefined,
+        lastName: "Doe",
+        fullName: "John Doe",
+      },
+      {
+        firstName: undefined,
+        lastName: "Smith",
+        fullName: "Jane Smith",
+      },
+    ];
+
+    restoreNames(users);
+
+    expect([users[0].firstName, users[1].firstName]).toEqual(["John", "Jane"]);
+  });
+
+  it("should handle fullName with one word", () => {
+    const users = [
+      {
+        firstName: undefined,
+        lastName: "Doe",
+        fullName: "John",
+      },
+    ];
+
+    restoreNames(users);
+
+    expect(users[0].firstName).toEqual("John");
+  });
+
+  it("should leave array unchanged if all have firstName", () => {
+    const users = [
+      {
+        firstName: "John",
+        lastName: "Doe",
+        fullName: "John Doe",
+      },
+    ];
+
+    restoreNames(users);
+
+    expect(users[0].firstName).toEqual("John");
+  });
 });
