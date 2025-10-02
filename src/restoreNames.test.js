@@ -3,7 +3,7 @@
 describe('restoreNames', () => {
   const { restoreNames } = require('./restoreNames');
 
-  it(`should declared`, () => {
+  it('should be declared', () => {
     expect(restoreNames).toBeInstanceOf(Function);
   });
 
@@ -121,5 +121,21 @@ describe('restoreNames', () => {
 
     restoreNames(users);
     expect(users).toBe(originalRef);
+  });
+
+  it('mutates the same user objects in place', () => {
+    const users = [
+      {
+        firstName: undefined,
+        lastName: 'Doe',
+        fullName: 'John Doe',
+      },
+    ];
+    const userRef = users[0];
+
+    restoreNames(users);
+
+    expect(users[0]).toBe(userRef);
+    expect(users[0].firstName).toEqual('John');
   });
 });
