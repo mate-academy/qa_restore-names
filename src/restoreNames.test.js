@@ -6,14 +6,11 @@ describe('restoreNames', () => {
   it('should restore firstName from fullName when it is undefined', () => {
     const users = [
       {
-        firstName: undefined,
-        lastName: 'Holy',
-        fullName: 'Jack Holy',
+        firstName: undefined, lastName: 'Holy', fullName: 'Jack Holy',
       },
     ];
 
-    restoreNames(users);
-
+    expect(restoreNames(users)).toBeUndefined();
     expect(users[0].firstName).toBe('Jack');
 
     expect(users[0]).toEqual({
