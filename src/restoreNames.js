@@ -2,7 +2,7 @@
 
 /**
  * @typedef {Object} User
- * @property {string} firstName
+ * @property {string|undefined} firstName
  * @property {string} lastName
  * @property {string} fullName
  *
@@ -12,13 +12,13 @@ function restoreNames(users) {
   for (const user of users) {
     // Przywracamy firstName tylko jeśli jest undefined
     if (user.firstName === undefined && typeof user.fullName === 'string') {
-      // Pobieramy pierwszy wyraz z fullName
       const firstName = user.fullName.split(/\s+/)[0];
-      user.firstName = firstName;
+      if (firstName) user.firstName = firstName; // nie przypisujemy pustych wartości
     }
   }
 }
 
 module.exports = { restoreNames };
+
 
 
