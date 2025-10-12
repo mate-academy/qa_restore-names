@@ -10,14 +10,15 @@
  */
 function restoreNames(users) {
   for (const user of users) {
-    // jeśli brakuje firstName lub lastName, uzupełniamy z fullName
-    if (!user.firstName || !user.lastName) {
-      const [firstName, lastName] = user.fullName.split(' ');
-      if (!user.firstName) user.firstName = firstName;
-      if (!user.lastName) user.lastName = lastName;
+    // Przywracamy firstName tylko jeśli jest undefined
+    if (user.firstName === undefined && typeof user.fullName === 'string') {
+      // Pobieramy pierwszy wyraz z fullName
+      const firstName = user.fullName.split(/\s+/)[0];
+      user.firstName = firstName;
     }
   }
 }
 
 module.exports = { restoreNames };
+
 
