@@ -48,8 +48,7 @@ describe('restoreNames', () => {
     expect(users[1]).toHaveProperty('firstName', 'Mike');
   });
 
-  it(`should set 'firstName' who do not have it
-    or is equal to undefined`, () => {
+  it(`should set 'firstName' when has a unvalid firstName`, () => {
     const users = [
       {
         firstName: undefined,
@@ -64,6 +63,29 @@ describe('restoreNames', () => {
 
     expect(users[0].firstName).toBeUndefined();
     expect(users[1]).not.toHaveProperty('firstName');
+
+    restoreNames(users);
+
+    expect(users[0]).toHaveProperty('firstName', 'Jack');
+    expect(users[1]).toHaveProperty('firstName', 'Mike');
+  });
+
+  it(`should does not modify when has a valid firstName`, () => {
+    const users = [
+      {
+        firstName: 'Jack',
+        lastName: 'Holy',
+        fullName: 'Jack Holy',
+      },
+      {
+        firstName: 'Mike',
+        lastName: 'Adams',
+        fullName: 'Mike Adams',
+      },
+    ];
+
+    expect(users[0]).toHaveProperty('firstName', 'Jack');
+    expect(users[1]).toHaveProperty('firstName', 'Mike');
 
     restoreNames(users);
 
