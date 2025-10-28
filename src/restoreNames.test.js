@@ -15,7 +15,8 @@ describe("restoreNames", () => {
         fullName: "Mike Adams",
       },
     ];
-
+    const result = restoreNames(users);
+    expect(result).toBeUndefined();
     users.forEach((user) => {
       expect(isObject(user)).toBeTruthy();
     });
@@ -43,19 +44,21 @@ describe("restoreNames", () => {
     });
   });
 
-  it("firstName is empty string", () => {
+  it("firstName is defined", () => {
     let users = [
       {
-        firstName: "",
+        firstName: "John",
         lastName: "Molly",
         fullName: "John Molly",
       },
       {
+        firstName: "Phil",
         lastName: "Colins",
         fullName: "Phil Colins",
       },
     ];
-
+    const result = restoreNames(users);
+    expect(result).toBeUndefined();
     users.forEach((user) => {
       expect(isObject(user)).toBeTruthy();
     });
