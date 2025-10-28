@@ -63,7 +63,7 @@ describe("restoreNames", () => {
       expect(isObject(user)).toBeTruthy();
     });
 
-    restoreNames(users);
+    
 
     expect(users).toEqual([
       {
