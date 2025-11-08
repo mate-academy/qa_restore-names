@@ -49,6 +49,38 @@ describe('restoreNames', () => {
     expect(users).toEqual(correctUsers);
   });
 
+  it('should not modify users where firstName is an empty string', () => {
+    const users = [
+      {
+        firstName: '',
+        lastName: 'Smith',
+        fullName: ' John Smith ',
+      },
+      {
+        firstName: undefined,
+        lastName: 'Brown',
+        fullName: 'Lisa Brown',
+      },
+    ];
+
+    const expected = [
+      {
+        firstName: '',
+        lastName: 'Smith',
+        fullName: ' John Smith ',
+      },
+      {
+        firstName: 'Lisa',
+        lastName: 'Brown',
+        fullName: 'Lisa Brown',
+      },
+    ];
+
+    restoreNames(users);
+
+    expect(users).toEqual(expected);
+  });
+
   it('restores only missing firstName in mixed users', () => {
     const mixedUsers = [
       {
