@@ -3,7 +3,7 @@
 describe('restoreNames', () => {
   const { restoreNames } = require('./restoreNames');
 
-  it('should restore firstName frome fullName if firstName is missing', () => {
+  it('should restore firstName from fullName if firstName is missing', () => {
     const users = [
       {
         firstName: undefined,
@@ -36,7 +36,7 @@ describe('restoreNames', () => {
     expect(users[0].firstName).toBe('Jack');
   });
 
-  it('should return anything', () => {
+  it('should not return anything', () => {
     const users = [
       {
         firstName: 'Jack',
