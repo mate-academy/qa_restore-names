@@ -10,9 +10,9 @@ describe('restoreNames', () => {
       },
     ];
 
-    const restoredUsers = restoreNames(users);
+    restoreNames(users);
 
-    expect(restoredUsers).toEqual([
+    expect(restoreNames(users)).toEqual([
       {
         firstName: 'John', lastName: 'Lennon', fullName: 'John Lennon',
       },
@@ -42,9 +42,9 @@ describe('restoreNames', () => {
       },
     ];
 
-    const restoredUsers = restoreNames(users);
+    restoreNames(users);
 
-    expect(restoredUsers).toEqual([
+    expect(restoreNames(users)).toEqual([
       {
         firstName: 'Madonna', lastName: '', fullName: 'Madonna',
       },
