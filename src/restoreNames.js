@@ -10,10 +10,21 @@
  */
 function restoreNames(users) {
   for (const user of users) {
-    if (!user.firstName) {
-      [user.firstName] = user.fullName.split(' ');
+    // Restore firstName and/or lastName from fullName
+    if (user.fullName && user.fullName.trim()) {
+      const [first, last] = user.fullName.split(' ');
+
+      if (!user.firstName) {
+        user.firstName = first;
+      }
+
+      if (!user.lastName) {
+        user.lastName = last || '';
+      }
     }
   }
+
+  return users;
 }
 
 module.exports = { restoreNames };

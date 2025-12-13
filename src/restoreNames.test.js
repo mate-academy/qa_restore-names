@@ -3,66 +3,70 @@
 const { restoreNames } = require('./restoreNames');
 
 describe('restoreNames', () => {
-  it('should return the full name if given both first and last names', () => {
+  it('should restore missing firstName and lastName from fullName', () => {
     const users = [
       {
-        firstName: 'John', lastName: 'Doe',
+        firstName: 'John', lastName: 'Doe', fullName: 'John Doe',
       },
       {
-        firstName: 'Jane', lastName: 'Smith',
+        firstName: '', lastName: 'Smith', fullName: 'Jane Smith',
+      },
+      {
+        firstName: 'Alice', lastName: '', fullName: 'Alice Johnson',
+      },
+      {
+        firstName: '', lastName: '', fullName: 'Bob Brown',
+      },
+      {
+        firstName: 'Charlie', lastName: 'Davis', fullName: '',
+      },
+      {
+        firstName: '', lastName: '', fullName: '',
       },
     ];
-    const result = restoreNames(users);
 
-    expect(result).toEqual([
+    const restoredUsers = restoreNames(users);
+
+    expect(restoredUsers).toEqual([
       {
         firstName: 'John', lastName: 'Doe', fullName: 'John Doe',
       },
       {
         firstName: 'Jane', lastName: 'Smith', fullName: 'Jane Smith',
       },
-    ]);
-  });
-
-  it('should restore first name from fullName if first name is missing', () => {
-    const users = [
       {
-        firstName: null, lastName: 'Holy', fullName: 'Jack Holy',
+        firstName: 'Alice', lastName: 'Johnson', fullName: 'Alice Johnson',
       },
       {
-        firstName: undefined, lastName: 'Johnson', fullName: 'Bob Johnson',
-      },
-    ];
-
-    const result = restoreNames(users);
-
-    expect(result).toEqual([
-      {
-        firstName: 'Jack', lastName: 'Holy', fullName: 'Jack Holy',
+        firstName: 'Bob', lastName: 'Brown', fullName: 'Bob Brown',
       },
       {
-        firstName: 'Bob', lastName: 'Johnson', fullName: 'Bob Johnson',
+        firstName: 'Charlie', lastName: 'Davis', fullName: '',
+      },
+      {
+        firstName: '', lastName: '', fullName: '',
       },
     ]);
   });
 
-  it('should return an empty string if both names are missing', () => {
+  it('should handle names with single word fullName', () => {
     const users = [
       {
-        firstName: null, lastName: null,
+        firstName: '', lastName: '', fullName: 'Madonna',
       },
       {
-        firstName: undefined, lastName: undefined,
+        firstName: '', lastName: '', fullName: 'Prince',
       },
     ];
-    const result = restoreNames(users);
 
-    expect(result).toEqual([
+    const restoredUsers = restoreNames(users);
+
+    expect(restoredUsers).toEqual([
       {
-        firstName: null, lastName: null, fullName: '',
+        firstName: 'Madonna', lastName: '', fullName: 'Madonna',
       },
       {
-        firstName: undefined, lastName: undefined, fullName: '',
+        firstName: 'Prince', lastName: '', fullName: 'Prince',
       },
     ]);
   });
