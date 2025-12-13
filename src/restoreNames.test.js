@@ -70,4 +70,26 @@ describe('restoreNames', () => {
       },
     ]);
   });
+
+  it('should handle if fullName is empty', () => {
+    const users = [
+      {
+        firstName: '', lastName: '', fullName: undefined,
+      },
+      {
+        firstName: 'Elton', lastName: '', fullName: undefined,
+      },
+    ];
+
+    const restoredUsers = restoreNames(users);
+
+    expect(restoredUsers).toEqual([
+      {
+        firstName: '', lastName: '', fullName: undefined,
+      },
+      {
+        firstName: 'Elton', lastName: '', fullName: undefined,
+      },
+    ]);
+  });
 });
