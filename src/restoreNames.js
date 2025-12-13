@@ -14,15 +14,17 @@ function restoreNames(users) {
     if (user.fullName && user.fullName.trim()) {
       const [first, last] = user.fullName.split(' ');
 
-      if (!user.firstName) {
+      if ((!user.firstName || user.firstName.trim() === '') && first) {
         user.firstName = first;
       }
 
-      if (!user.lastName) {
-        user.lastName = last || '';
+      if ((!user.lastName || user.lastName.trim() === '') && last) {
+        user.lastName = last;
       }
     }
   }
+
+  return users;
 }
 
 module.exports = { restoreNames };

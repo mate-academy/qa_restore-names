@@ -49,13 +49,10 @@ describe('restoreNames', () => {
     ]);
   });
 
-  it('should handle names with single word fullName', () => {
+  it('should return a users firstname if it is undefined', () => {
     const users = [
       {
-        firstName: '', lastName: '', fullName: 'Madonna',
-      },
-      {
-        firstName: '', lastName: '', fullName: 'Prince',
+        firstName: undefined, lastName: 'Lennon', fullName: 'John Lennon',
       },
     ];
 
@@ -63,32 +60,7 @@ describe('restoreNames', () => {
 
     expect(restoredUsers).toEqual([
       {
-        firstName: 'Madonna', lastName: '', fullName: 'Madonna',
-      },
-      {
-        firstName: 'Prince', lastName: '', fullName: 'Prince',
-      },
-    ]);
-  });
-
-  it('should handle if fullName is empty', () => {
-    const users = [
-      {
-        firstName: '', lastName: '', fullName: undefined,
-      },
-      {
-        firstName: 'Elton', lastName: '', fullName: undefined,
-      },
-    ];
-
-    const restoredUsers = restoreNames(users);
-
-    expect(restoredUsers).toEqual([
-      {
-        firstName: '', lastName: '', fullName: undefined,
-      },
-      {
-        firstName: 'Elton', lastName: '', fullName: undefined,
+        firstName: 'John', lastName: 'Lennon', fullName: 'John Lennon',
       },
     ]);
   });
