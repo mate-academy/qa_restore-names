@@ -23,8 +23,6 @@ function restoreNames(users) {
       }
     }
   }
-
-  return users;
 }
 
 module.exports = { restoreNames };
