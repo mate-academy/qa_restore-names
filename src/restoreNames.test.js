@@ -3,42 +3,55 @@
 describe('restoreNames', () => {
   const { restoreNames } = require('./restoreNames');
 
-  const arrayOfUsersButRaw = [
-    {
-      firstName: 'Jack',
-      lastName: 'Joyce',
-      fullName: 'Jack Joyce',
-    },
-    {
-      lastName: 'Faden',
-      fullName: 'Jesse Faden',
-    },
-    {
-      lastName: 'Faden',
-      fullName: 'Dylan Faden',
-    },
-  ];
+  let arrayOfUsersButRaw;
+  let arrayOfUsers;
 
-  const arrayOfUsers = [
-    {
-      firstName: 'Jack',
-      lastName: 'Joyce',
-      fullName: 'Jack Joyce',
-    },
-    {
-      firstName: 'Jesse',
-      lastName: 'Faden',
-      fullName: 'Jesse Faden',
-    },
-    {
-      firstName: 'Dylan',
-      lastName: 'Faden',
-      fullName: 'Dylan Faden',
-    },
-  ];
+  beforeEach(() => {
+    arrayOfUsersButRaw = [
+      {
+        firstName: 'Jack',
+        lastName: 'Joyce',
+        fullName: 'Jack Joyce',
+      },
+      {
+        lastName: 'Faden',
+        fullName: 'Jesse Faden',
+      },
+      {
+        lastName: 'Faden',
+        fullName: 'Dylan Faden',
+      },
+    ];
+
+    arrayOfUsers = [
+      {
+        firstName: 'Jack',
+        lastName: 'Joyce',
+        fullName: 'Jack Joyce',
+      },
+      {
+        firstName: 'Jesse',
+        lastName: 'Faden',
+        fullName: 'Jesse Faden',
+      },
+      {
+        firstName: 'Dylan',
+        lastName: 'Faden',
+        fullName: 'Dylan Faden',
+      },
+    ];
+  });
 
   it('should be declared', () => {
     expect(restoreNames).toBeInstanceOf(Function);
+  });
+
+  it('should not modify an empty array', () => {
+    const array = [];
+
+    restoreNames(array);
+
+    expect(array).toEqual([]);
   });
 
   it(`should not modify objects where field 'firstName' isn't empty`, () => {
