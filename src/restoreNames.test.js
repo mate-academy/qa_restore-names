@@ -41,20 +41,45 @@ describe('restoreNames', () => {
     expect(restoreNames).toBeInstanceOf(Function);
   });
 
+  it('should not modify an empty array', () => {
+    const array = [];
+
+    restoreNames(array);
+
+    expect(array).toEqual([]);
+  });
+
   it(`should not modify objects where field 'firstName' isn't empty`, () => {
-    const arrayCopy = arrayOfUsersButRaw.slice(0, 1);
+    const array = [
+      {
+        firstName: 'Jack',
+        lastName: 'Joyce',
+        fullName: 'Jack Joyce',
+      },
+    ];
 
-    restoreNames(arrayCopy);
+    restoreNames(array);
 
-    expect(arrayCopy[0]).toEqual(arrayOfUsers[0]);
+    expect(array).toEqual(array);
   });
 
   it(`should restore missing 'firstName' fields from 'fullName'`, () => {
-    const arrayCopy = arrayOfUsersButRaw.slice(1);
+    const array = [
+      {
+        lastName: 'Faden',
+        fullName: 'Jesse Faden',
+      },
+    ];
 
-    restoreNames(arrayCopy);
+    restoreNames(array);
 
-    expect(arrayCopy).toEqual(arrayOfUsers.slice(1));
+    expect(array).toEqual([
+      {
+        firstName: 'Jesse',
+        lastName: 'Faden',
+        fullName: 'Jesse Faden',
+      },
+    ]);
   });
 
   it('should restore all missing names in the array', () => {
