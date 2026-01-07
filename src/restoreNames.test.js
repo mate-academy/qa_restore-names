@@ -18,6 +18,7 @@ describe('restoreNames', () => {
         fullName: 'Jesse Faden',
       },
       {
+        firstName: undefined,
         lastName: 'Faden',
         fullName: 'Dylan Faden',
       },
