@@ -1,11 +1,70 @@
 'use strict';
 
 describe('restoreNames', () => {
-  // const { restoreNames } = require('./restoreNames');
+  const { restoreNames } = require('./restoreNames');
 
-  it('should ', () => {
+  it('should update firstname field', () => {
+    const users = [
+      {
+        firstName: undefined,
+        lastName: 'Holy',
+        fullName: 'Jack Holy',
+      },
+    ];
 
+    restoreNames(users);
+
+    expect(users).toEqual([
+      {
+        firstName: 'Jack',
+        lastName: 'Holy',
+        fullName: 'Jack Holy',
+      },
+    ]);
   });
 
-  // write tests here
+  it('should add firstname field if not exist', () => {
+    const users = [
+      {
+        lastName: 'Adams',
+        fullName: 'Mike Adams',
+      },
+    ];
+
+    restoreNames(users);
+
+    expect(users).toEqual([
+      {
+        firstName: 'Mike',
+        lastName: 'Adams',
+        fullName: 'Mike Adams',
+      },
+    ]);
+  });
+
+  it('should return {} if users.length = 0', () => {
+    const users = [];
+
+    restoreNames(users);
+
+    expect(users).toEqual([]);
+  });
+
+  it(`should return initial result if firstname isn't empty`, () => {
+    const users = [
+      {
+        firstName: 'Mike',
+        lastName: 'Adams',
+      },
+    ];
+
+    restoreNames(users);
+
+    expect(users).toEqual([
+      {
+        firstName: 'Mike',
+        lastName: 'Adams',
+      },
+    ]);
+  });
 });
