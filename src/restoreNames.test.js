@@ -42,7 +42,7 @@ describe('restoreNames', () => {
     ]);
   });
 
-  it('should return {} if users.length = 0', () => {
+  it('should handle an empty array without errors', () => {
     const users = [];
 
     restoreNames(users);
@@ -50,7 +50,7 @@ describe('restoreNames', () => {
     expect(users).toEqual([]);
   });
 
-  it(`should return initial result if firstname isn't empty`, () => {
+  it(`should not update if firstname isn't empty`, () => {
     const users = [
       {
         firstName: 'Mike',
@@ -66,5 +66,17 @@ describe('restoreNames', () => {
         lastName: 'Adams',
       },
     ]);
+  });
+
+  it(`should return undefined`, () => {
+    const users = [
+      {
+        firstName: undefined,
+        lastName: 'Holy',
+        fullName: 'Jack Holy',
+      },
+    ];
+
+    expect(restoreNames(users)).toBe(undefined);
   });
 });
