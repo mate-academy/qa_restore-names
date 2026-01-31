@@ -1,31 +1,35 @@
-"use strict";
+'use strict';
 
-describe("restoreNames", () => {
-  const { restoreNames } = require("./restoreNames");
+describe('restoreNames', () => {
+  const { restoreNames } = require('./restoreNames');
 
   const users = [
     {
       firstName: undefined,
-      lastName: "Holy",
-      fullName: "Jack Holy",
+      lastName: 'Holy',
+      fullName: 'Jack Holy',
     },
     {
-      lastName: "Adams",
-      fullName: "Mike Adams",
+      lastName: 'Adams',
+      fullName: 'Mike Adams',
     },
   ];
 
-  it("should be a function", () => {
+  it('should be a function', () => {
+    const result = restoreNames(users);
+
+    expect(result).toBe(undefined);
+  });
+
+  it('should be a function', () => {
     expect(restoreNames).toBeInstanceOf(Function);
   });
 
-  it("if fullName 'Jack Holy' should have firstName 'Jack'", () => {
-    restoreNames(users);
-    expect(users[0].firstName).toBe("Jack");
-  });
+  restoreNames(users);
 
-  it("if fullName 'Mike Adams' should have firstName 'Mike'", () => {
-    restoreNames(users);
-    expect(users[1].firstName).toBe("Mike");
+  users.forEach((item, index) => {
+    it('firstName should be equl first part of fullName', () => {
+      expect(item.firstName).toBe(item.fullName.split(' ')[0]);
+    });
   });
 });
