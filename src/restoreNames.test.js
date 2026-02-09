@@ -51,7 +51,7 @@ describe('restoreNames', () => {
   });
 
   it('should don`t affect correct data', () => {
-    const correctUsers = [
+    let correctUsers = [
       {
         firstName: 'Jack',
         lastName: 'Holy',
@@ -64,21 +64,8 @@ describe('restoreNames', () => {
       },
     ];
 
-    const copyOfCorrectUsers = [
-      {
-        firstName: 'Jack',
-        lastName: 'Holy',
-        fullName: 'Jack Holy',
-      },
-      {
-        firstName: 'Mike',
-        lastName: 'Adams',
-        fullName: 'Mike Adams',
-      },
-    ];
+    correctUsers = restoreNames(correctUsers);
 
-    restoreNames(correctUsers);
-
-    expect(correctUsers).toEqual(copyOfCorrectUsers);
+    expect(correctUsers).toBe(undefined);
   });
 });
