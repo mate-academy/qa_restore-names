@@ -7,6 +7,10 @@ describe('restoreNames', () => {
     expect(restoreNames).toBeInstanceOf(Function);
   });
 
+  it('should return nothing', () => {
+    expect(restoreNames([])).toBe(undefined);
+  });
+
   it('should throw error if users is not an array', () => {
     const users = 'Bob Mike Henry';
 
