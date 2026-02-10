@@ -25,6 +25,7 @@ describe('restoreNames', () => {
         fullName: 'Jack Holy',
       },
     ]);
+    expect(restoreNames(users)).toBeUndefined();
   });
 
   it('should add field firstName with it`s value if it is absent', () => {
@@ -44,5 +45,6 @@ describe('restoreNames', () => {
         fullName: 'Mike Adams',
       },
     ]);
+    expect(restoreNames(users)).toBeUndefined();
   });
 });
