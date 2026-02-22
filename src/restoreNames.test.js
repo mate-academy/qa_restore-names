@@ -16,7 +16,9 @@ describe('restoreNames', () => {
       },
     ];
 
-    restoreNames(users);
+    const result = restoreNames(users);
+
+    expect(result).toBeUndefined();
 
     expect(users[0].firstName).toBe('Jack');
     expect(users[1].firstName).toBe('Mike');
@@ -45,7 +47,10 @@ describe('restoreNames', () => {
   it('should work correctly if array is empty', () => {
     const users = [];
 
-    expect(() => restoreNames(users).not.toThrow());
+    expect(() => {
+      restoreNames(users);
+    }).not.toThrow();
+
     expect(users).toEqual([]);
   });
 });
