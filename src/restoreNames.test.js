@@ -3,6 +3,12 @@
 describe('restoreNames', () => {
   const { restoreNames } = require('./restoreNames');
 
+  test('should return undefined', () => {
+    const users = [];
+
+    expect(restoreNames(users)).toBeUndefined();
+  });
+
   test('should restore firstName when it is undefined', () => {
     const users = [
       {
