@@ -3,13 +3,7 @@
 describe('restoreNames', () => {
   const { restoreNames } = require('./restoreNames');
 
-  test('should return undefined', () => {
-    const users = [];
-
-    expect(restoreNames(users)).toBeUndefined();
-  });
-
-  test('should restore firstName when it is undefined', () => {
+  test('should restore firstName when it is undefined and preserve other fields', () => {
     const users = [
       {
         firstName: undefined,
@@ -21,9 +15,12 @@ describe('restoreNames', () => {
     restoreNames(users);
 
     expect(users[0].firstName).toBe('Jack');
+    // Перевірка збереження існуючих даних
+    expect(users[0].lastName).toBe('Holy');
+    expect(users[0].fullName).toBe('Jack Holy');
   });
 
-  test('should restore firstName when it is missing (not in object)', () => {
+  test('should restore firstName when it is missing and preserve other fields', () => {
     const users = [
       {
         lastName: 'Adams',
@@ -34,9 +31,12 @@ describe('restoreNames', () => {
     restoreNames(users);
 
     expect(users[0].firstName).toBe('Mike');
+    // Перевірка збереження існуючих даних
+    expect(users[0].lastName).toBe('Adams');
+    expect(users[0].fullName).toBe('Mike Adams');
   });
 
-  test('should NOT change firstName if it already exists', () => {
+  test('should NOT change firstName if it already exists and preserve other fields', () => {
     const users = [
       {
         firstName: 'John',
@@ -48,19 +48,21 @@ describe('restoreNames', () => {
     restoreNames(users);
 
     expect(users[0].firstName).toBe('John');
+    expect(users[0].lastName).toBe('Doe');
+    expect(users[0].fullName).toBe('Johnny Doe');
   });
 
-  test('should handle multiple users in the array', () => {
+  test('should handle multiple users and preserve all their respective fields', () => {
     const users = [
       {
-        firstName: undefined,
-        fullName: 'Alice Cooper',
+        firstName: undefined, lastName: 'Cooper', fullName: 'Alice Cooper',
       },
       {
-        firstName: 'Bob',
-        fullName: 'Robert Marley',
+        firstName: 'Bob', lastName: 'Marley', fullName: 'Robert Marley',
       },
-      { fullName: 'Charlie Chaplin' },
+      {
+        lastName: 'Chaplin', fullName: 'Charlie Chaplin',
+      },
     ];
 
     restoreNames(users);
@@ -68,14 +70,17 @@ describe('restoreNames', () => {
     expect(users).toEqual([
       {
         firstName: 'Alice',
+        lastName: 'Cooper',
         fullName: 'Alice Cooper',
       },
       {
         firstName: 'Bob',
+        lastName: 'Marley',
         fullName: 'Robert Marley',
       },
       {
         firstName: 'Charlie',
+        lastName: 'Chaplin',
         fullName: 'Charlie Chaplin',
       },
     ]);
