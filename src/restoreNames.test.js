@@ -14,7 +14,7 @@ describe('restoreNames', () => {
 
     restoreNames(users);
 
-    expect(users).toBe([{
+    expect(users).toEqual([{
       firstName: 'Mike',
       lastName: 'Adams',
       fullName: 'Mike Adams',
@@ -33,7 +33,7 @@ describe('restoreNames', () => {
 
     restoreNames(users);
 
-    expect(users).toBe([{
+    expect(users).toEqual([{
       firstName: 'Jack',
       lastName: 'Holy',
       fullName: 'Jack Holy',
