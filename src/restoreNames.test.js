@@ -11,7 +11,7 @@ describe('restoreNames', () => {
 
     restoreNames([user]);
 
-    expect(user.firstName).toBeDefined();
+    expect(user.firstName).toBe('Jack');
   });
 
   it('should add firstName from fullName when firstName is undefined', () => {
@@ -53,8 +53,17 @@ describe('restoreNames', () => {
 
     restoreNames(users);
 
-    for (const user of users) {
-      expect(user.firstName).toBeDefined();
-    }
+    expect(users).toEqual([
+      {
+        firstName: 'Jack',
+        lastName: 'Holy',
+        fullName: 'Jack Holy',
+      },
+      {
+        firstName: 'Mike',
+        lastName: 'Adams',
+        fullName: 'Mike Adams',
+      },
+    ]);
   });
 });
