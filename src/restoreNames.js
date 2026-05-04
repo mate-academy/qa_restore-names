@@ -9,9 +9,9 @@
  * @param {User[]} users
  */
 function restoreNames(users) {
-  for (const user of users) {
-    if (!user.firstName) {
-      [user.firstName] = user.fullName.split(' ');
+  for (const item of users) {
+    if (!item.firstName) {
+      [item.firstName] = item.fullName.split(' ');
     }
   }
 }
