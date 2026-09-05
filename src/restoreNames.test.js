@@ -8,11 +8,11 @@ describe('restoreNames', () => {
   });
 
   test('should  set correct firstName if it is undefined', () => {
-    expect(restoreNames({
+    expect(restoreNames([{
       firstName: undefined,
       lastName: 'Holy',
       fullName: 'Jack Holy',
-    },)).toEqual({
+    }],)).toEqual({
       firstName: 'Jack',
       lastName: 'Holy',
       fullName: 'Jack Holy',
@@ -20,10 +20,10 @@ describe('restoreNames', () => {
   });
 
   test('should  set correct firstName if it is unset', () => {
-    expect(restoreNames({
+    expect(restoreNames([{
       lastName: 'Adams',
       fullName: 'Mike Adams',
-    },)).toEqual({
+    }],)).toEqual({
       firstName: 'Mike',
       lastName: 'Adams',
       fullName: 'Mike Adams',
