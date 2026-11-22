@@ -15,6 +15,30 @@ describe('restoreNames', () => {
     expect(users).toEqual([]);
   });
 
+  it('should return undefined', () => {
+    const users = [];
+
+    const result = restoreNames(users);
+
+    expect(result).toBeUndefined();
+  });
+
+  it('should not change existing firstName', () => {
+    const users = [
+      {
+        firstName: 'Jacky',
+        lastName: 'Holy',
+        fullName: 'Jack Holy',
+      },
+    ];
+
+    restoreNames(users);
+
+    expect(users).toEqual([
+      { firstName: 'Jacky', lastName: 'Holy', fullName: 'Jack Holy' },
+    ]);
+  });
+
   it('should restore firstName if it is undefined', () => {
     const users = [
       {
